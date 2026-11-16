@@ -24,5 +24,15 @@ __global__ void AddVectors(const float *A, const float *B, float *C, int valuesP
     // valuesPerThread elements, with an index mapping that makes consecutive
     // threads in a warp access consecutive addresses at each step (coalesced).
     // The stub leaves C unwritten, so it fails the check until you implement it.
-    (void)A; (void)B; (void)C; (void)valuesPerThread;
+    
+    int tid = blockIdx.x * blockDim.x + threadIdx.x; // thread index in group of blocks
+
+    int stride = gridDim.x * blockDim.x; // number of total threads in group of blocks
+    int index = tid;
+    
+    for (int i = 0; i < valuesPerThread; i++) {
+        C[index] = A[index] + B[index];
+        index += stride;
+
+    }
 }
