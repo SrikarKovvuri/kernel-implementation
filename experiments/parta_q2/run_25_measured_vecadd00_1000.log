@@ -1,0 +1,4 @@
+N=122880000 valuesPerThread=1000
+Kernel Time: 86.996 milliseconds (ms)
+Test PASSED
+RESULT,program=vecadd00,N=122880000,values_per_thread=1000,time_ms=86.996,correct=1

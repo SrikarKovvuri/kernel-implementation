@@ -1,0 +1,75 @@
+Part A Q3: Tiled Matrix Multiply
+
+HPML Homework 3 | Baseline report section | November 17, 2026 at 12:47 AM ET
+
+The provided matmultKernel00.cu was compiled as matmult00 with FOOTPRINT_SIZE=16 and tested on 256 x 256, 512 x 512, and 1024 x 1024 matrices. All 36 executions across the initial and controlled series passed the driver's CPU reference check. With eager module loading enabled, median kernel times across five measured runs were 0.232 ms, 1.225 ms, 9.285 ms, respectively.
+
+Hardware and compilation
+
+The experiment used an NVIDIA GeForce RTX 4060 Laptop GPU (8188 MiB reported memory), an Intel Core Ultra 9 185H CPU, and Ubuntu 24.04.1 LTS under WSL2 on Windows. The NVIDIA driver was 566.26. CUDA nvcc 12.6.85 and GCC 13.3.0 compiled the original matmult.cu, matmultKernel00.cu, and timer.cu with -O3 -std=c++14 -arch=sm_89 -DFOOTPRINT_SIZE=16 and the shared CUDA runtime. The provided sources and Makefile were not modified.
+
+Dimensions and launch configuration
+
+The driver computes matrix side n = argument x FOOTPRINT_SIZE. The arguments 16, 32, and 64 produce sides 256, 512, and 1024. Controlled runs used CUDA_MODULE_LOADING=EAGER ./matmult00 argument. Each 16 x 16 block has 256 threads and produces one 16 x 16 output tile, with one output element per thread. All dimensions are divisible by 16, so no padding or partial tiles are needed.
+
+Matrix dimensions | CLI argument | Grid (blocks) | Total blocks
+
+256 x 256 | 16 | 16 x 16 | 256
+
+512 x 512 | 32 | 32 x 32 | 1024
+
+1024 x 1024 | 64 | 64 x 64 | 4096
+
+Measurement and correctness procedure
+
+Two series were recorded: the original inherited environment, followed by EAGER loading to investigate anomalous small-matrix times. Each series used one excluded preliminary run per size and five measured rounds, with size order shuffled using seed 6998. Every invocation was a new process with one kernel launch. No measured trials were discarded. The original deterministic FP32 inputs and CPU reference were unchanged. Every output was checked with tolerance 0.01; maximum observed absolute error was 0.
+
+Kernel time was measured using the supplied CUDA events and stop-event synchronization. Allocation, input generation, transfers, CPU reference multiplication, validation, and cleanup were outside the timed interval. A separate wall-clock measurement covered the whole process; the CPU reference can make this much longer than the kernel time. The results below report the requested kernel duration.
+
+Controlled kernel times with eager loading
+
+Matrix side n | Median (ms) | Mean +/- SD (ms) | Range (ms)
+
+256 | 0.232 | 0.234 +/- 0.054 | 0.181-0.318
+
+512 | 1.225 | 1.229 +/- 0.031 | 1.199-1.268
+
+1024 | 9.285 | 9.260 +/- 0.064 | 9.191-9.320
+
+Five measured executions per row; SD is sample standard deviation. All runs returned correct=1 and exit code 0. Times are printed to three decimal places in milliseconds. EAGER is set only for benchmark child processes, not system-wide.
+
+Baseline kernel behavior
+
+Each block iterates over n/16 tiles along the reduction dimension. On each iteration, its threads cooperatively load one 16 x 16 tile of A and one of B into shared memory. Together these arrays occupy 2048 bytes. After synchronization, each thread performs 16 multiply-accumulates into a register accumulator. A second synchronization protects the shared tiles before the next load. After all iterations, each thread stores its single output element.
+
+Within a block, each staged A value contributes to 16 output columns and each staged B value contributes to 16 output rows. This provides reuse of data loaded from global memory. The provided inner-loop unroll directive was retained. This experiment varies matrix size only: the 16 x 16 block shape, 16 x 16 footprint, and one-output-per-thread strategy remain fixed. The larger footprint and four-output-per-thread variant belongs to Q4 and was not implemented or measured here.
+
+Scaling and throughput
+
+Doubling the matrix side from 256 to 512 increased median time by 5.28x; doubling from 512 to 1024 increased it by 7.58x. Dense matrix multiplication performs approximately 2n^3 floating-point operations when a multiply and an add count as two operations. Thus each doubling of n increases the arithmetic work eightfold, while the number of blocks grows fourfold and the reduction-tile iterations per block double.
+
+Using 2n^3 divided by median kernel time, the observed arithmetic throughput was 144.63, 219.13, 231.29 GFLOP/s at sides 256, 512, and 1024. These are derived throughput estimates, not hardware-counter measurements. More blocks at larger sizes create additional parallel work, but exact runtime ratios also depend on scheduling, fixed launch costs, memory/cache behavior, and operating conditions; eightfold work need not produce an exact eightfold time increase.
+
+First-launch loading and timing limitations
+
+Initial median event times were 4.553, 1.397, and 9.633 ms; the 256 case ranged from 3.025 to 13.494 ms and was anomalously slower than 512. CUDA can defer kernel loading until first use, which can skew benchmark timing [2]. The same executable was rerun with CUDA_MODULE_LOADING=EAGER to move loading earlier. The much lower small-matrix times are consistent with first-launch loading overhead; no trace was collected to attribute every delay. Both series remain saved.
+
+A preliminary run in another process does not warm the kernel inside the next process. EAGER addresses module loading, but this remains a single-launch desktop WSL2 benchmark with unlocked GPU clocks and power state. Means, SDs, and ranges show residual variability. Use the same EAGER setting when comparing against matmult01 in Q4.
+
+Raw controlled kernel times in milliseconds
+
+Matrix side | Round 1 | Round 2 | Round 3 | Round 4 | Round 5
+
+256 | 0.193 | 0.232 | 0.318 | 0.181 | 0.246
+
+512 | 1.225 | 1.268 | 1.253 | 1.199 | 1.202
+
+1024 | 9.191 | 9.192 | 9.313 | 9.285 | 9.320
+
+Excluded warm-up kernel times, in increasing matrix-size order: 0.190 ms, 1.296 ms, 9.213 ms. Mean complete process durations were 0.911 s, 0.902 s, 4.674 s, including the CPU correctness reference.
+
+Reproducibility and sources
+
+Original measurements: results.json and raw_runs.csv. Controlled measurements: eager_results.json and eager_raw_runs.csv. Both retain per-run stdout logs. run_experiment.py builds the unchanged sources; check_eager_loading.py reruns the executable with EAGER. Compiler commands and source hashes are recorded. The scripts use workspace tmp/cuda126-linux.
+
+[1] HPML Homework 3, Part A Q3; supplied matmult.cu, matmultKernel00.cu, matmultKernel.h, Makefile, and timer.cu. [2] NVIDIA CUDA Programming Guide: Lazy Loading, especially benchmarking guidance. Experiment automation and report drafting assistance: OpenAI Codex.

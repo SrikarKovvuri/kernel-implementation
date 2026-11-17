@@ -1,0 +1,332 @@
+{
+  "started_utc": "2026-11-17T05:44:48.268142+00:00",
+  "build_command": [
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc",
+    "-O3",
+    "-std=c++14",
+    "-arch=sm_89",
+    "-DFOOTPRINT_SIZE=16",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/include",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cccl-linux-x86_64-12.6.77-archive/include",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/common",
+    "-L/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/lib",
+    "--cudart=shared",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta/matmult.cu",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta/matmultKernel00.cu",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/common/timer.cu",
+    "-o",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/parta_q3/matmult00"
+  ],
+  "source_sha256": {
+    "src/parta/matmult.cu": "ce865e50dff07195f8f705b114b2f475f6203574806ca01ef7d63cf50f40319c",
+    "src/parta/matmultKernel00.cu": "be1350a31e2416edad6f87887949bd50327df79d60a81cd4c10a4884da73491a",
+    "src/parta/matmultKernel.h": "178f8f0d716e4fc643b719922e1fc0a8ac6e1007eb59575788a5670146bf66d9",
+    "src/common/timer.cu": "74be9c7ac114800fdf20968dbc9f458afbddfd009e5821a4f136b55df92354f9",
+    "src/common/timer.h": "af092d2e0a2e1d220c1d2909860ce701cb6ee56d717e9dc5d8abe93716ddefde"
+  },
+  "launch": {
+    "block": [
+      16,
+      16
+    ],
+    "footprint_size": 16,
+    "outputs_per_thread": 1
+  },
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 566.26",
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0",
+    "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "cpu": "Intel(R) Core(TM) Ultra 9 185H",
+    "os": "Linux DESKTOP-7HTD4FP 5.15.153.1-microsoft-standard-WSL2 #1 SMP Fri Mar 29 23:14:13 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux",
+    "distribution": "PRETTY_NAME=\"Ubuntu 24.04.1 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.1 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n"
+  },
+  "protocol": "One warm-up process per size, excluded. Five measured rounds; shuffled size order, seed 6998. CLI multipliers 16,32,64 produce matrix sizes 256,512,1024. Each new process runs the unchanged driver and one kernel launch. CUDA events time only the kernel. No trials discarded.",
+  "runs": [
+    {
+      "phase": "warmup",
+      "trial": 0,
+      "argument": 16,
+      "size": 256,
+      "footprint": 16,
+      "kernel_ms": 3.26,
+      "process_wall_ms": 781.271,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "warmup",
+      "trial": 0,
+      "argument": 32,
+      "size": 512,
+      "footprint": 16,
+      "kernel_ms": 1.606,
+      "process_wall_ms": 1046.917,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "warmup",
+      "trial": 0,
+      "argument": 64,
+      "size": 1024,
+      "footprint": 16,
+      "kernel_ms": 9.483,
+      "process_wall_ms": 4379.375,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 1,
+      "argument": 32,
+      "size": 512,
+      "footprint": 16,
+      "kernel_ms": 1.393,
+      "process_wall_ms": 1044.208,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 1,
+      "argument": 64,
+      "size": 1024,
+      "footprint": 16,
+      "kernel_ms": 9.42,
+      "process_wall_ms": 3982.766,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 1,
+      "argument": 16,
+      "size": 256,
+      "footprint": 16,
+      "kernel_ms": 3.025,
+      "process_wall_ms": 791.258,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 2,
+      "argument": 64,
+      "size": 1024,
+      "footprint": 16,
+      "kernel_ms": 9.767,
+      "process_wall_ms": 4212.175,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 2,
+      "argument": 16,
+      "size": 256,
+      "footprint": 16,
+      "kernel_ms": 3.077,
+      "process_wall_ms": 1015.004,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 2,
+      "argument": 32,
+      "size": 512,
+      "footprint": 16,
+      "kernel_ms": 1.424,
+      "process_wall_ms": 942.592,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 3,
+      "argument": 16,
+      "size": 256,
+      "footprint": 16,
+      "kernel_ms": 4.553,
+      "process_wall_ms": 850.774,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 3,
+      "argument": 32,
+      "size": 512,
+      "footprint": 16,
+      "kernel_ms": 1.397,
+      "process_wall_ms": 940.229,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 3,
+      "argument": 64,
+      "size": 1024,
+      "footprint": 16,
+      "kernel_ms": 9.7,
+      "process_wall_ms": 4263.801,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 4,
+      "argument": 64,
+      "size": 1024,
+      "footprint": 16,
+      "kernel_ms": 9.633,
+      "process_wall_ms": 3926.082,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 4,
+      "argument": 16,
+      "size": 256,
+      "footprint": 16,
+      "kernel_ms": 13.494,
+      "process_wall_ms": 668.31,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 4,
+      "argument": 32,
+      "size": 512,
+      "footprint": 16,
+      "kernel_ms": 1.374,
+      "process_wall_ms": 1050.784,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 5,
+      "argument": 32,
+      "size": 512,
+      "footprint": 16,
+      "kernel_ms": 1.684,
+      "process_wall_ms": 935.17,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 5,
+      "argument": 16,
+      "size": 256,
+      "footprint": 16,
+      "kernel_ms": 12.232,
+      "process_wall_ms": 732.737,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 5,
+      "argument": 64,
+      "size": 1024,
+      "footprint": 16,
+      "kernel_ms": 9.456,
+      "process_wall_ms": 4279.136,
+      "correct": 1,
+      "max_abs_err": 0.0,
+      "exit_code": 0
+    }
+  ],
+  "summary": [
+    {
+      "size": 256,
+      "argument": 16,
+      "runs": 5,
+      "grid": [
+        16,
+        16
+      ],
+      "block": [
+        16,
+        16
+      ],
+      "mean_kernel_ms": 7.276199999999999,
+      "median_kernel_ms": 4.553,
+      "stdev_kernel_ms": 5.15613204834787,
+      "min_kernel_ms": 3.025,
+      "max_kernel_ms": 13.494,
+      "mean_process_wall_ms": 811.6166,
+      "max_abs_err": 0.0,
+      "approx_flops": 33554432,
+      "GFLOPs_per_s_from_median": 7.369741269492642
+    },
+    {
+      "size": 512,
+      "argument": 32,
+      "runs": 5,
+      "grid": [
+        32,
+        32
+      ],
+      "block": [
+        16,
+        16
+      ],
+      "mean_kernel_ms": 1.4544,
+      "median_kernel_ms": 1.397,
+      "stdev_kernel_ms": 0.12958510716899527,
+      "min_kernel_ms": 1.374,
+      "max_kernel_ms": 1.684,
+      "mean_process_wall_ms": 982.5966000000001,
+      "max_abs_err": 0.0,
+      "approx_flops": 268435456,
+      "GFLOPs_per_s_from_median": 192.15136435218324
+    },
+    {
+      "size": 1024,
+      "argument": 64,
+      "runs": 5,
+      "grid": [
+        64,
+        64
+      ],
+      "block": [
+        16,
+        16
+      ],
+      "mean_kernel_ms": 9.5952,
+      "median_kernel_ms": 9.633,
+      "stdev_kernel_ms": 0.15165651980709546,
+      "min_kernel_ms": 9.42,
+      "max_kernel_ms": 9.767,
+      "mean_process_wall_ms": 4132.792,
+      "max_abs_err": 0.0,
+      "approx_flops": 2147483648,
+      "GFLOPs_per_s_from_median": 222.92989183016715
+    }
+  ],
+  "finished_utc": "2026-11-17T05:45:24.594365+00:00",
+  "sources_unchanged": true
+}

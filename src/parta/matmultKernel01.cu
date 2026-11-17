@@ -43,5 +43,31 @@ __global__ void MatMulKernel(const Matrix A, const Matrix B, Matrix C)
     // C with each thread producing its 2x2 subtile. Stage A and B tiles in
     // shared memory, accumulate across the K dimension, synchronize where
     // needed, and write the results back to C.
-    (void)A; (void)B; (void)C;
+    int blockRow = blockIdx.y;
+    int blockCol= blockIdx.x;
+
+    int row = threadIdx.y;
+    int col = threadIdx.x;
+
+    int startCol = threadIdx.x * 2;
+    int numTiles = A.width / FOOTPRINT_SIZE;
+
+    for (int m = 0; m < numTiles; m++) {
+        Matrix Asub = GetSubMatrix(A, blockRow, m, FOOTPRINT_SIZE); //get the ptr to the submatrix of A in whatver tile
+        Matrix Bsub = GetSubMatrix(B, m, blockCol, FOOTPRINT_SIZE); //get the ptr to the submatrix of B in whatever tile
+
+        __shared__ float sa[FOOTPRINT_SIZE][FOOTPRINT_SIZE];
+        __shared__ float sb[FOOTPRINT_SIZE][FOOTPRINT_SIZE];
+
+        //each block must load a larger tile than q3 so now we need 32x32. That means each thread needs to load more elements from global memory.
+
+        
+
+        
+        
+
+        
+
+    }
+    
 }

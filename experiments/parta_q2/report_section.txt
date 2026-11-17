@@ -1,0 +1,69 @@
+Part A Q2: Coalesced Vector Addition
+
+HPML Homework 3 | Report section | November 17, 2026 at 12:17 AM ET
+
+The saved coalesced vecaddKernel01.cu implementation was compiled as vecadd01 and compared with a fresh build of the provided vecadd00 baseline. Across 500, 1000, and 2000 values per thread, the observed median kernel speedup ranged from 5.97x to 9.09x. All 36 executions, including warm-ups, passed the driver's correctness check.
+
+Setup and controlled comparison
+
+The tests ran on an NVIDIA GeForce RTX 4060 Laptop GPU (8188 MiB reported memory) with an Intel Core Ultra 9 185H CPU, using Ubuntu 24.04.1 LTS in WSL2 on Windows. The NVIDIA driver was 566.26. Both executables used CUDA nvcc 12.6.85, GCC 13.3.0, flags -O3 -std=c++14 -arch=sm_89, and the shared CUDA runtime. They used the same unmodified vecadd.cu driver and timer.cu; only the linked kernel source differed. No assignment source was changed during this experiment.
+
+Both versions launched 240 blocks with 512 threads per block. Thus T = 122,880 threads and N = Tv elements for v values per thread. The input sizes were 61,440,000, 122,880,000, and 245,760,000 elements. Each program added FP32 arrays initialized to 1 and 2, and checked every output for exactly 3. The three device arrays occupied 0.73728, 1.47456, and 2.94912 GB, respectively (GB = 10^9 bytes).
+
+Each program-size combination received one preliminary warm-up execution, followed by five measured executions. In each measured round, the order of input sizes and the order of the two programs within each size were shuffled with seed 6998. All trials were retained. Each execution was a new process containing one kernel launch. Fresh vecadd00 measurements from this session are used for the Q2 comparison; the earlier Q1 measurements remain preserved separately.
+
+CUDA events recorded by the supplied timer measured kernel execution only, with stop-event synchronization. Allocations, initialization, host-device transfers, validation, and cleanup were excluded. Speedup is defined as median(vecadd00 kernel time) / median(vecadd01 kernel time); it is not the median of per-round ratios or an end-to-end application speedup.
+
+Kernel timing and speedup
+
+Values / thread | vecadd00 median (ms) | vecadd01 median (ms) | Speedup (T00 / T01)
+
+500 | 47.088 | 7.884 | 5.97x
+
+1000 | 88.899 | 11.044 | 8.05x
+
+2000 | 172.162 | 18.947 | 9.09x
+
+Values / thread | vecadd00 mean +/- SD (ms) | vecadd01 mean +/- SD (ms)
+
+500 | 62.237 +/- 31.412 | 8.097 +/- 1.611
+
+1000 | 89.504 +/- 3.129 | 11.198 +/- 0.672
+
+2000 | 172.594 +/- 0.868 | 18.621 +/- 0.681
+
+Five measured runs per entry; SD is sample standard deviation. Every run returned correct=1 and exit code 0. Individual trials and warm-ups are retained in raw_runs.csv and stdout logs.
+
+Why the coalesced mapping helps
+
+In vecadd00, thread tid accesses index tid*v + j at loop iteration j. Neighboring warp lanes therefore access addresses 4v bytes apart: 2000, 4000, or 8000 bytes in these experiments. In vecadd01, the index is tid + j*T. At a fixed j, neighboring lanes access adjacent 4-byte floats, allowing their memory requests to be combined into fewer transactions [2]. Each thread still performs v additions and the same total useful work. The mapping covers every index from 0 to Tv-1 exactly once because each index has a unique remainder tid modulo T and quotient j.
+
+Each element entails two logical 4-byte reads and one 4-byte write. Effective bandwidth, 12N divided by median kernel time [2], was 15.66, 16.59, 17.13 GB/s for vecadd00 and 93.52, 133.52, 155.65 GB/s for vecadd01, in increasing input-size order. This is useful-data throughput, not measured physical DRAM traffic. The higher throughput is consistent with improved coalescing. Cache reuse across iterations means the speedup need not equal an idealized transaction-count reduction.
+
+Increasing the input fourfold from 500 to 2000 values per thread increased median kernel time by 3.66x for vecadd00 and 2.40x for vecadd01. The launch geometry stayed fixed, so the larger cases increased loop length and memory traffic rather than thread count. Each kernel performs little arithmetic per useful byte, making memory-access efficiency an important explanation for the observed difference.
+
+The baseline at 500 values per thread ranged from 42.314 to 116.746 ms, raising its mean to 62.237 ms compared with a 47.088 ms median. All runs were retained. GPU clocks and power state were not locked; shuffled execution order reduces order bias but does not eliminate desktop or WSL2 timing noise. No hardware-counter profiling was performed, so the cause of individual slow runs and exact transaction counts are unknown. The larger observed speedup at larger sizes accompanies higher effective throughput in vecadd01; three sizes and five repetitions do not establish a general scaling law. These kernel speedups do not apply directly to full process time, which also includes transfers and setup.
+
+Raw measured kernel times in milliseconds
+
+Program / values | Round 1 | Round 2 | Round 3 | Round 4 | Round 5
+
+vecadd00 / 500 | 43.565 | 42.314 | 116.746 | 47.088 | 61.470
+
+vecadd01 / 500 | 6.451 | 6.874 | 8.806 | 10.469 | 7.884
+
+vecadd00 / 1000 | 88.899 | 88.928 | 94.910 | 86.996 | 87.789
+
+vecadd01 / 1000 | 11.308 | 11.044 | 12.291 | 10.555 | 10.793
+
+vecadd00 / 2000 | 172.162 | 173.452 | 171.821 | 173.615 | 171.922
+
+vecadd01 / 2000 | 18.159 | 19.133 | 17.657 | 18.947 | 19.207
+
+Reproducibility and references
+
+The experiment folder contains both executables, run_experiment.py, build logs, environment.json, results.json, raw_runs.csv, and per-run stdout logs. results.json records full compiler commands and source SHA-256 hashes; all sources were verified unchanged. The runner uses the workspace toolkit under tmp/cuda126-linux.
+
+[1] HPML Homework 3, Part A Q2; supplied driver and timer; saved vecaddKernel00.cu and vecaddKernel01.cu.[2] NVIDIA, CUDA C++ Best Practices Guide 12.6, sections 8.2.2 and 9.2.1: Effective bandwidth and coalesced global-memory access.
+
+Experiment automation and report drafting assistance: OpenAI Codex.

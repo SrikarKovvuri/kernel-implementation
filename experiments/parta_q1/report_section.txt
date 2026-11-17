@@ -1,0 +1,62 @@
+Part A Q1: Vector Addition Baseline
+
+HPML Homework 3 | Report section | November 16, 2026 at 11:30 PM ET
+
+The provided non-coalesced vecadd00 program was compiled and run at 500, 1000, and 2000 values per thread. All 18 executions passed the program's element-by-element correctness check. Median kernel time increased from 44.814 ms to 172.280 ms as the amount of work increased fourfold.
+
+Experimental setup
+
+The experiment used an NVIDIA GeForce RTX 4060 Laptop GPU (8188 MiB reported memory), an Intel Core Ultra 9 185H CPU, and Ubuntu 24.04.1 LTS under WSL2 on Windows. The NVIDIA driver was 566.26. Compilation used CUDA nvcc 12.6.85, GCC 13.3.0, and the flags -O3 -std=c++14 -arch=sm_89. The CUDA runtime was dynamically linked. The original vecadd.cu driver, vecaddKernel00.cu kernel, and timer.cu were compiled without modifying their source. The supplied Makefile already contains comments explaining its programs.
+
+The launch configuration was fixed at 240 blocks of 512 threads, or 122,880 threads. For v values per thread, the total array length was N = 122,880v. Each input array contained FP32 values: A[i] = 1 and B[i] = 2. The driver checked every output for C[i] = 3 exactly. The largest case required 2.94912 GB for the three device arrays, plus the same array storage on the host; GB denotes 10^9 bytes.
+
+Procedure and timing scope
+
+The executable was invoked as vecadd00 500, vecadd00 1000, and vecadd00 2000. One preliminary execution at each size was excluded as a warm-up. Five measured rounds followed, with all three sizes run once per round in a shuffled order (seed 6998). Each invocation was a new process and performed the single kernel launch in the unchanged driver; this was not a same-process warmed-kernel loop.
+
+The reported kernel duration came from the supplied CUDA-event timer, with synchronization on the stop event. It excludes data initialization, allocation, host-device transfers, correctness checking, and cleanup. A separate host timer recorded complete process duration. Every measured run was retained, including the slow run at 2000 values per thread.
+
+Measured kernel execution times
+
+Values / thread | Elements N | Median (ms) | Mean +/- SD (ms) | Range (ms)
+
+500 | 61,440,000 | 44.814 | 45.597 +/- 2.690 | 43.120-50.203
+
+1000 | 122,880,000 | 88.480 | 89.421 +/- 2.366 | 87.829-93.586
+
+2000 | 245,760,000 | 172.280 | 197.715 +/- 53.530 | 171.139-293.279
+
+Five measured executions per row. SD is the sample standard deviation. All correctness checks returned correct=1 and all process exit codes were zero. Full process durations averaged 1.230 s, 1.597 s, and 2.485 s, respectively; these are not the kernel timings requested by the assignment.
+
+Analysis
+
+Doubling values per thread from 500 to 1000 increased median kernel time by 1.97x; doubling again increased it by 1.95x. Across the full range, four times as many elements took 3.84x as long. This is approximately linear scaling with total work. The grid size stayed fixed, so larger inputs increased each thread's loop length rather than the number of threads.
+
+The baseline assigns thread tid the indices tid*v + j. At the same loop iteration j, neighboring lanes access addresses 4v bytes apart: 2000, 4000, and 8000 bytes for the three cases. The accesses are therefore scattered across memory segments instead of adjacent across a warp, reducing coalescing efficiency [2]. Each thread still accesses consecutive elements over successive iterations, so cache reuse can occur; the address pattern alone does not establish an exact DRAM-traffic multiplier.
+
+Each output logically requires two 4-byte reads and one 4-byte write, giving 12N useful bytes for one addition per element. Effective bandwidth, computed as 12N divided by median kernel time [2], was 16.45, 16.67, 17.12 GB/s. These values describe useful data throughput, not measured physical DRAM bandwidth. The low arithmetic work per byte and scattered warp accesses suggest memory access is an important performance constraint, but no hardware-counter profiling was performed to isolate the bottleneck.
+
+The 2000-value case included a 293.279 ms execution, compared with a 172.280 ms median. Keeping that run raises the mean to 197.715 ms and the sample SD to 53.530 ms. Its cause was not measured. GPU clocks and power state were not fixed, and the tests ran in a normal WSL2 desktop environment. The median summarizes typical observed behavior, while the mean, SD, and full range expose the variability. Five repetitions are a limited sample, and the near-linear median trend should not be read as an exact scaling law.
+
+These measurements establish the non-coalesced baseline for Q2. A measured coalescing speedup requires running vecadd01 at the same input sizes and under the same protocol; it cannot be inferred from this baseline alone.
+
+Raw measured kernel times
+
+Values / thread | Round 1 | Round 2 | Round 3 | Round 4 | Round 5
+
+500 | 50.203 | 45.117 | 43.120 | 44.729 | 44.814
+
+1000 | 93.586 | 87.829 | 88.989 | 88.223 | 88.480
+
+2000 | 172.212 | 293.279 | 172.280 | 179.665 | 171.139
+
+All values above are milliseconds. Warm-up times (excluded): 46.506 ms, 87.229 ms, and 173.438 ms for 500, 1000, and 2000 values per thread.
+
+Reproducibility and references
+
+The experiment folder contains the vecadd00 executable, run_experiment.py, build.log, environment.json, results.json, raw_runs.csv, and individual stdout logs. results.json preserves the exact build command, source SHA-256 hashes, trial order, and summary statistics. Hashes were checked after execution and all supplied sources were unchanged. The runner expects the locally downloaded toolkit under the workspace tmp/cuda126-linux directory.
+
+[1] HPML Homework 3 handout, Part A Q1; supplied src/parta/vecadd.cu, vecaddKernel00.cu, and src/common/timer.cu.
+[2] NVIDIA, CUDA C++ Best Practices Guide 12.6, sections 8.2.2 and 9.2.1: <link href="https://docs.nvidia.com/cuda/archive/12.6.2/cuda-c-best-practices-guide/index.html" color="#234A72">Effective bandwidth and coalesced access to global memory</link>.
+
+Experiment automation and report drafting assistance: OpenAI Codex.

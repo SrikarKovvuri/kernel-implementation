@@ -1,0 +1,264 @@
+{
+  "started_utc": "2026-11-17T04:30:45.768962+00:00",
+  "build_command": [
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc",
+    "-O3",
+    "-std=c++14",
+    "-arch=sm_89",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/include",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cccl-linux-x86_64-12.6.77-archive/include",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/common",
+    "-L/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/lib",
+    "--cudart=shared",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta/vecadd.cu",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta/vecaddKernel00.cu",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/common/timer.cu",
+    "-o",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/parta_q1/vecadd00"
+  ],
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 566.26",
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0",
+    "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "os": "Linux DESKTOP-7HTD4FP 5.15.153.1-microsoft-standard-WSL2 #1 SMP Fri Mar 29 23:14:13 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux",
+    "cpu": "Intel Core Ultra 9 185H",
+    "distribution": "Ubuntu 24.04.1 LTS under WSL2 on Windows"
+  },
+  "source_sha256": {
+    "src/parta/vecadd.cu": "38a8a45469dcdb43ece6944d711c63998f424d7c4415a14e6c784de9cfb4dca7",
+    "src/parta/vecaddKernel00.cu": "077689eccccbf370624e5a788ad581582bc0ab2deb74e2f50421f7a18204fd04",
+    "src/parta/vecaddKernel.h": "b2dd40feff18eaf3a9661263a3bc782c0de642eb517a2d96fcbe384d13b48324",
+    "src/common/timer.cu": "74be9c7ac114800fdf20968dbc9f458afbddfd009e5821a4f136b55df92354f9",
+    "src/common/timer.h": "af092d2e0a2e1d220c1d2909860ce701cb6ee56d717e9dc5d8abe93716ddefde"
+  },
+  "launch": {
+    "blocks": 240,
+    "threads_per_block": 512
+  },
+  "protocol": "One separate warm-up process per size, then five measured rounds with each round shuffled using seed 6998. Unchanged program performs one kernel launch per process. Kernel time is CUDA event elapsed time; wall time is process elapsed time.",
+  "runs": [
+    {
+      "phase": "warmup",
+      "trial": 0,
+      "values_per_thread": 500,
+      "elements": 61440000,
+      "kernel_ms": 46.506,
+      "process_wall_ms": 1819.203,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "warmup",
+      "trial": 0,
+      "values_per_thread": 1000,
+      "elements": 122880000,
+      "kernel_ms": 87.229,
+      "process_wall_ms": 1658.636,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "warmup",
+      "trial": 0,
+      "values_per_thread": 2000,
+      "elements": 245760000,
+      "kernel_ms": 173.438,
+      "process_wall_ms": 2604.953,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 1,
+      "values_per_thread": 1000,
+      "elements": 122880000,
+      "kernel_ms": 93.586,
+      "process_wall_ms": 1396.967,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 1,
+      "values_per_thread": 2000,
+      "elements": 245760000,
+      "kernel_ms": 172.212,
+      "process_wall_ms": 2324.501,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 1,
+      "values_per_thread": 500,
+      "elements": 61440000,
+      "kernel_ms": 50.203,
+      "process_wall_ms": 1291.093,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 2,
+      "values_per_thread": 2000,
+      "elements": 245760000,
+      "kernel_ms": 293.279,
+      "process_wall_ms": 2691.076,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 2,
+      "values_per_thread": 500,
+      "elements": 61440000,
+      "kernel_ms": 45.117,
+      "process_wall_ms": 1293.654,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 2,
+      "values_per_thread": 1000,
+      "elements": 122880000,
+      "kernel_ms": 87.829,
+      "process_wall_ms": 1749.313,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 3,
+      "values_per_thread": 500,
+      "elements": 61440000,
+      "kernel_ms": 43.12,
+      "process_wall_ms": 1235.599,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 3,
+      "values_per_thread": 1000,
+      "elements": 122880000,
+      "kernel_ms": 88.989,
+      "process_wall_ms": 1655.928,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 3,
+      "values_per_thread": 2000,
+      "elements": 245760000,
+      "kernel_ms": 172.28,
+      "process_wall_ms": 2460.865,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 4,
+      "values_per_thread": 2000,
+      "elements": 245760000,
+      "kernel_ms": 179.665,
+      "process_wall_ms": 2319.303,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 4,
+      "values_per_thread": 500,
+      "elements": 61440000,
+      "kernel_ms": 44.729,
+      "process_wall_ms": 1074.71,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 4,
+      "values_per_thread": 1000,
+      "elements": 122880000,
+      "kernel_ms": 88.223,
+      "process_wall_ms": 1703.485,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 5,
+      "values_per_thread": 1000,
+      "elements": 122880000,
+      "kernel_ms": 88.48,
+      "process_wall_ms": 1476.875,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 5,
+      "values_per_thread": 500,
+      "elements": 61440000,
+      "kernel_ms": 44.814,
+      "process_wall_ms": 1252.47,
+      "correct": 1,
+      "exit_code": 0
+    },
+    {
+      "phase": "measured",
+      "trial": 5,
+      "values_per_thread": 2000,
+      "elements": 245760000,
+      "kernel_ms": 171.139,
+      "process_wall_ms": 2627.465,
+      "correct": 1,
+      "exit_code": 0
+    }
+  ],
+  "summary": [
+    {
+      "values_per_thread": 500,
+      "elements": 61440000,
+      "runs": 5,
+      "mean_kernel_ms": 45.5966,
+      "median_kernel_ms": 44.814,
+      "stdev_kernel_ms": 2.690152281934986,
+      "min_kernel_ms": 43.12,
+      "max_kernel_ms": 50.203,
+      "mean_process_wall_ms": 1229.5052,
+      "minimum_array_traffic_GB": 0.73728,
+      "effective_bandwidth_GBps": 16.169626682691252
+    },
+    {
+      "values_per_thread": 1000,
+      "elements": 122880000,
+      "runs": 5,
+      "mean_kernel_ms": 89.4214,
+      "median_kernel_ms": 88.48,
+      "stdev_kernel_ms": 2.365850650400401,
+      "min_kernel_ms": 87.829,
+      "max_kernel_ms": 93.586,
+      "mean_process_wall_ms": 1596.5136,
+      "minimum_array_traffic_GB": 1.47456,
+      "effective_bandwidth_GBps": 16.490012457868026
+    },
+    {
+      "values_per_thread": 2000,
+      "elements": 245760000,
+      "runs": 5,
+      "mean_kernel_ms": 197.715,
+      "median_kernel_ms": 172.28,
+      "stdev_kernel_ms": 53.530147127576626,
+      "min_kernel_ms": 171.139,
+      "max_kernel_ms": 293.279,
+      "mean_process_wall_ms": 2484.642,
+      "minimum_array_traffic_GB": 2.94912,
+      "effective_bandwidth_GBps": 14.916015476822698
+    }
+  ],
+  "finished_utc": "2026-11-17T04:31:20.297107+00:00",
+  "sources_unchanged": true
+}

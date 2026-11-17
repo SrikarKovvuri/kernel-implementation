@@ -1,0 +1,39 @@
+{
+  "started_utc": "2026-11-17T04:30:45.768962+00:00",
+  "build_command": [
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc",
+    "-O3",
+    "-std=c++14",
+    "-arch=sm_89",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/include",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cccl-linux-x86_64-12.6.77-archive/include",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/common",
+    "-L/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/lib",
+    "--cudart=shared",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta/vecadd.cu",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta/vecaddKernel00.cu",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/common/timer.cu",
+    "-o",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/parta_q1/vecadd00"
+  ],
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 566.26",
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0",
+    "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "os": "Linux DESKTOP-7HTD4FP 5.15.153.1-microsoft-standard-WSL2 #1 SMP Fri Mar 29 23:14:13 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux",
+    "cpu": "Intel Core Ultra 9 185H",
+    "distribution": "Ubuntu 24.04.1 LTS under WSL2 on Windows"
+  },
+  "source_sha256": {
+    "src/parta/vecadd.cu": "38a8a45469dcdb43ece6944d711c63998f424d7c4415a14e6c784de9cfb4dca7",
+    "src/parta/vecaddKernel00.cu": "077689eccccbf370624e5a788ad581582bc0ab2deb74e2f50421f7a18204fd04",
+    "src/parta/vecaddKernel.h": "b2dd40feff18eaf3a9661263a3bc782c0de642eb517a2d96fcbe384d13b48324",
+    "src/common/timer.cu": "74be9c7ac114800fdf20968dbc9f458afbddfd009e5821a4f136b55df92354f9",
+    "src/common/timer.h": "af092d2e0a2e1d220c1d2909860ce701cb6ee56d717e9dc5d8abe93716ddefde"
+  },
+  "launch": {
+    "blocks": 240,
+    "threads_per_block": 512
+  },
+  "protocol": "One separate warm-up process per size, then five measured rounds with each round shuffled using seed 6998. Unchanged program performs one kernel launch per process. Kernel time is CUDA event elapsed time; wall time is process elapsed time."
+}
