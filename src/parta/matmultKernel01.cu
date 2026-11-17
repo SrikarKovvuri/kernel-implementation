@@ -46,28 +46,59 @@ __global__ void MatMulKernel(const Matrix A, const Matrix B, Matrix C)
     int blockRow = blockIdx.y;
     int blockCol= blockIdx.x;
 
-    int row = threadIdx.y;
-    int col = threadIdx.x;
+    int row0 = threadIdx.y;
+    int row1 = threadIdx.y + 16;
 
-    int startCol = threadIdx.x * 2;
+    int col0 = threadIdx.x;
+    int col1 = threadIdx.x + 16;
+
     int numTiles = A.width / FOOTPRINT_SIZE;
 
+    //accumalte the partial results for the 4 loaded values
+    float c00 = 0.0f;
+    float c01 = 0.0f;
+    float c10 = 0.0f;
+    float c11 = 0.0f;
+
+    __shared__ float sa[FOOTPRINT_SIZE][FOOTPRINT_SIZE];
+    __shared__ float sb[FOOTPRINT_SIZE][FOOTPRINT_SIZE];
+    
     for (int m = 0; m < numTiles; m++) {
         Matrix Asub = GetSubMatrix(A, blockRow, m, FOOTPRINT_SIZE); //get the ptr to the submatrix of A in whatver tile
         Matrix Bsub = GetSubMatrix(B, m, blockCol, FOOTPRINT_SIZE); //get the ptr to the submatrix of B in whatever tile
 
-        __shared__ float sa[FOOTPRINT_SIZE][FOOTPRINT_SIZE];
-        __shared__ float sb[FOOTPRINT_SIZE][FOOTPRINT_SIZE];
+        
 
         //each block must load a larger tile than q3 so now we need 32x32. That means each thread needs to load more elements from global memory.
+        // we use a quadrant approach to load the elements into shared memory.
 
-        
+        sa[row0][col0] = GetElement(Asub, row0, col0);
+        sa[row0][col1] = GetElement(Asub, row0, col1);
+        sa[row1][col0] = GetElement(Asub, row1, col0);
+        sa[row1][col1] = GetElement(Asub, row1, col1);
 
-        
-        
+        sb[row0][col0] = GetElement(Bsub, row0, col0);
+        sb[row0][col1] = GetElement(Bsub, row0, col1);
+        sb[row1][col0] = GetElement(Bsub, row1, col0);
+        sb[row1][col1] = GetElement(Bsub, row1, col1);
 
-        
+        __syncthreads();
 
+        #pragma unroll
+        for (int k = 0; k < FOOTPRINT_SIZE; k++) {
+            c00 += sa[row0][k] * sb[k][col0];
+            c01 += sa[row0][k] * sb[k][col1];
+            c10 += sa[row1][k] * sb[k][col0];
+            c11 += sa[row1][k] * sb[k][col1];
+        }
+
+        __syncthreads();
     }
+
+    Matrix Csub = GetSubMatrix(C, blockRow, blockCol, FOOTPRINT_SIZE);
+    SetElement(Csub, row0, col0, c00);
+    SetElement(Csub, row0, col1, c01);
+    SetElement(Csub, row1, col0, c10);
+    SetElement(Csub, row1, col1, c11);
     
 }
