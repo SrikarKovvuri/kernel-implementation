@@ -1,0 +1,149 @@
+{
+  "started_utc": "2026-11-17T22:26:25.599599+00:00",
+  "build_commands": [
+    [
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc",
+      "-O3",
+      "-std=c++14",
+      "-arch=sm_89",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/include",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cccl-linux-x86_64-12.6.77-archive/include",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/libcublas-linux-x86_64-12.6.4.1-archive/include",
+      "-DFOOTPRINT_SIZE=16",
+      "-DGetElement=GetElement00",
+      "-DSetElement=SetElement00",
+      "-DGetSubMatrix=GetSubMatrix00",
+      "-DMatMulKernel=MatMul00",
+      "-c",
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta/matmultKernel00.cu",
+      "-o",
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/cublas_comparison/kernel00.o"
+    ],
+    [
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc",
+      "-O3",
+      "-std=c++14",
+      "-arch=sm_89",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/include",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cccl-linux-x86_64-12.6.77-archive/include",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/libcublas-linux-x86_64-12.6.4.1-archive/include",
+      "-DFOOTPRINT_SIZE=32",
+      "-DGetElement=GetElement01",
+      "-DSetElement=SetElement01",
+      "-DGetSubMatrix=GetSubMatrix01",
+      "-DMatMulKernel=MatMul01",
+      "-c",
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta/matmultKernel01.cu",
+      "-o",
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/cublas_comparison/kernel01.o"
+    ],
+    [
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc",
+      "-O3",
+      "-std=c++14",
+      "-arch=sm_89",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/parta",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/include",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cccl-linux-x86_64-12.6.77-archive/include",
+      "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/libcublas-linux-x86_64-12.6.4.1-archive/include",
+      "-DFOOTPRINT_SIZE=16",
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/cublas_comparison/benchmark.cu",
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/cublas_comparison/kernel00.o",
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/cublas_comparison/kernel01.o",
+      "-L/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/lib",
+      "-L/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/libcublas-linux-x86_64-12.6.4.1-archive/lib",
+      "--cudart=shared",
+      "-lcublas",
+      "-o",
+      "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/cublas_comparison/benchmark"
+    ]
+  ],
+  "source_sha256": {
+    "matmultKernel00.cu": "be1350a31e2416edad6f87887949bd50327df79d60a81cd4c10a4884da73491a",
+    "matmultKernel01.cu": "05edebbdcc5da916f0f89b785b9310c8b5bc864d45bc6dab7bee86a74a366bda",
+    "matmultKernel.h": "178f8f0d716e4fc643b719922e1fc0a8ac6e1007eb59575788a5670146bf66d9"
+  },
+  "protocol": "1024x1024 FP32; identical assignment inputs, CPU reference; 10 warm-ups per implementation in the same process, then 50 rounds in shuffled implementation order (seed 6998). CUDA events, no transfers/allocations in timing; cuBLAS SGEMM pedantic FP32; NVIDIA_TF32_OVERRIDE=0; CUDA_MODULE_LOADING=EAGER. Ratio of medians.",
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 566.26",
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0",
+    "os": "Linux DESKTOP-7HTD4FP 5.15.153.1-microsoft-standard-WSL2 #1 SMP Fri Mar 29 23:14:13 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux"
+  },
+  "configuration": {
+    "n": "1024",
+    "warmups": "10",
+    "trials": "50",
+    "cublas_version": "120604",
+    "math": "FP32_PEDANTIC"
+  },
+  "summary": {
+    "matmult00": {
+      "runs": 50,
+      "median_ms": 9.184256,
+      "mean_ms": 9.19171072,
+      "stdev_ms": 0.029647347167719083,
+      "min_ms": 9.172992,
+      "max_ms": 9.37984
+    },
+    "matmult01": {
+      "runs": 50,
+      "median_ms": 4.694528,
+      "mean_ms": 4.70899008,
+      "stdev_ms": 0.04576935490390926,
+      "min_ms": 4.6848,
+      "max_ms": 4.972544
+    },
+    "cublas_sgemm": {
+      "runs": 50,
+      "median_ms": 1.40544,
+      "mean_ms": 1.43087616,
+      "stdev_ms": 0.09044116149037991,
+      "min_ms": 1.345536,
+      "max_ms": 1.759232
+    }
+  },
+  "checks": [
+    {
+      "phase": "after_warmup",
+      "program": "matmult00",
+      "correct": "1",
+      "max_abs_err": "0"
+    },
+    {
+      "phase": "after_warmup",
+      "program": "matmult01",
+      "correct": "1",
+      "max_abs_err": "0"
+    },
+    {
+      "phase": "after_warmup",
+      "program": "cublas_sgemm",
+      "correct": "1",
+      "max_abs_err": "0"
+    },
+    {
+      "phase": "after_measurement",
+      "program": "matmult00",
+      "correct": "1",
+      "max_abs_err": "0"
+    },
+    {
+      "phase": "after_measurement",
+      "program": "matmult01",
+      "correct": "1",
+      "max_abs_err": "0"
+    },
+    {
+      "phase": "after_measurement",
+      "program": "cublas_sgemm",
+      "correct": "1",
+      "max_abs_err": "0"
+    }
+  ],
+  "speedup_over_baseline": 1.9563747409750245,
+  "custom_time_divided_by_cublas_time": 3.340255009107468,
+  "sources_unchanged": true,
+  "finished_utc": "2026-11-17T22:26:51.932446+00:00"
+}

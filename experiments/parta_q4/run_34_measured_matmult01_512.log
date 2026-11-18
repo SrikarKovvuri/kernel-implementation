@@ -1,0 +1,5 @@
+Matrix size: 512 x 512 (FOOTPRINT_SIZE=32)
+Kernel Time: 0.315 milliseconds (ms)
+Max abs error vs CPU reference: 0
+Test PASSED
+RESULT,program=matmult01,size=512,footprint=32,time_ms=0.315,correct=1,max_abs_err=0

@@ -281,3 +281,34 @@ code, measurements, and written analysis you submit must be your own. Cite
 any external resources you used. `results.json` records your host,
 timestamp, and your own correctness checks; make sure it reflects a run of
 your own code on your own GPU.
+
+## Part A Q4 experiment notes
+
+The saved `matmultKernel01.cu` uses a 32x32 footprint with the original
+16x16 thread block. Each thread loads four elements from each input tile
+and accumulates four outputs. Its inner accumulation loop is unrolled;
+barriers protect shared-memory reads and reuse. The baseline uses a 16x16
+footprint and one output per thread. The requested input loads are halved
+by the larger footprint, while shared-memory use per block increases from
+2 KiB to 8 KiB. Both versions preserve contiguous accesses within each
+half-warp.
+
+The Q4 comparison uses equal matrix dimensions: arguments 16/32/64 for
+`matmult00` and 8/16/32 for `matmult01` give sides 256/512/1024. Both were
+built with CUDA 12.6, `-O3 -std=c++14 -arch=sm_89`, and run on the RTX 4060
+Laptop GPU in WSL2 with `CUDA_MODULE_LOADING=EAGER`. Five measured trials
+per program and size followed excluded preliminary runs; execution order
+was shuffled. All measured runs and additional 32/96-side checks matched
+the provided CPU reference exactly.
+
+Median baseline/new kernel times were 0.442/0.453 ms, 0.733/0.556 ms, and
+2.640/1.567 ms at sides 256, 512, and 1024. The corresponding ratios were
+0.98x, 1.32x, and 1.68x: the small case did not demonstrate an improvement.
+These are kernel-only timings from a fresh baseline comparison, not a
+replacement for the earlier Q3 measurements. Variability and all raw runs
+are retained in [the Q4 experiment folder](experiments/parta_q4/).
+
+The folder includes `run_experiment.py`, both executables, compiler logs,
+CSV measurements, JSON metadata with source hashes, and a PDF report
+section with an editable text copy. The experiment runner expects the
+downloaded CUDA components under the workspace's `tmp/cuda126-linux`.
