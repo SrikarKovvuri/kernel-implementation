@@ -15,14 +15,12 @@
 // K=1 million -- grade_local.py uses this for a fast correctness/build
 // smoke test; run with no args to reproduce the full sweep for your report.
 //
-// TODO: implement addArrays so that z becomes the element-wise sum of x and
-// y. The stub below compiles and runs but just writes zeros, so it fails the
-// checksum check (which expects every z[i] == 3.0) until you implement it.
+// Add each pair on the CPU. The driver times this function, including the
+// first writes to the output allocation, but excludes input initialization.
 static void addArrays(long n, const float *x, const float *y, float *z) {
-    // TODO (B1): set z to the element-wise sum of x and y (both length n).
-    // The placeholder below writes zeros so the program runs; replace it.
-    (void)x; (void)y;
-    memset(z, 0, (size_t)n * sizeof(float));
+    for (long i = 0; i < n; ++i) {
+        z[i] = x[i] + y[i];
+    }
 }
 
 int main(int argc, char **argv)
