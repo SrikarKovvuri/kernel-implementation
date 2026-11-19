@@ -1,0 +1,16 @@
+DEVICE,name=NVIDIA GeForce RTX 4060 Laptop GPU,managedMemory=1,concurrentManagedAccess=0,pageableMemoryAccess=0
+CHECK,n=1,scenario=1,every_element_and_guards=PASS
+CHECK,n=1,scenario=2,every_element_and_guards=PASS
+CHECK,n=1,scenario=3,every_element_and_guards=PASS
+CHECK,n=255,scenario=1,every_element_and_guards=PASS
+CHECK,n=255,scenario=2,every_element_and_guards=PASS
+CHECK,n=255,scenario=3,every_element_and_guards=PASS
+CHECK,n=256,scenario=1,every_element_and_guards=PASS
+CHECK,n=256,scenario=2,every_element_and_guards=PASS
+CHECK,n=256,scenario=3,every_element_and_guards=PASS
+CHECK,n=257,scenario=1,every_element_and_guards=PASS
+CHECK,n=257,scenario=2,every_element_and_guards=PASS
+CHECK,n=257,scenario=3,every_element_and_guards=PASS
+CHECK,n=513,scenario=1,every_element_and_guards=PASS
+CHECK,n=513,scenario=2,every_element_and_guards=PASS
+CHECK,n=513,scenario=3,every_element_and_guards=PASS

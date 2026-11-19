@@ -23,8 +23,26 @@ static float runScenario(int scenario, long n, float *z, const float *x, const f
 {
     GpuTimer timer;
     timer.start();
-    (void)scenario; (void)n; (void)z; (void)x; (void)y;
-    // TODO: dispatch on `scenario` and issue the launches (see q2_malloc.cu).
+    // Match the explicit-memory launch patterns, using the managed pointers
+    // directly. No prefetch or data warm-up: this measures their first GPU use.
+    switch (scenario) {
+        case 1:
+            for (long offset = 0; offset < n; ++offset) {
+                addKernel<<<1, 1>>>(n, (int)offset, z, x, y);
+            }
+            break;
+        case 2:
+            for (long offset = 0; offset < n; offset += 256) {
+                addKernel<<<1, 256>>>(n, (int)offset, z, x, y);
+            }
+            break;
+        case 3:
+            addKernel<<<(n + 255) / 256, 256>>>(n, 0, z, x, y);
+            break;
+        default:
+            fprintf(stderr, "Invalid scenario: %d\n", scenario);
+            exit(EXIT_FAILURE);
+    }
     timer.stop();
     return timer.elapsed_ms();
 }

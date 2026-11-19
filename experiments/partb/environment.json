@@ -1,0 +1,31 @@
+{
+  "started_utc": "2026-11-19T04:48:34.072247+00:00",
+  "predictions_sha256": "4de2629a5ee71234412f3fef9e7cb8a662308554fd8200a2d14f08ac1ef72088",
+  "predictions_mtime_utc": "2026-11-19T04:47:09.097223+00:00",
+  "CUDA_MODULE_LOADING": "EAGER",
+  "managed_memory_policy": "Fresh allocations per scenario, initialized on CPU. First GPU use. No prefetch or data warm-up.",
+  "measurement_protocol": "One complete measured sweep per supplied binary; all launches in each scenario enclosed by supplied timer. Explicit copies outside timer. Small correctness checks use separate processes and allocations.",
+  "source_sha256": {
+    "q1_cpu.cpp": "54886de604bfea54d551f5c6176bdd7d4694f6d6f3c6a0f8ec66f461b5f4179b",
+    "q2_malloc.cu": "cd00edeb75e094c0e3536c5a60580df493c46f12e316c610b317ed68686046da",
+    "q3_unified.cu": "8337c46439f0511c20f31e45203c0a698de847cec4e6a9eb3ca27da46e8ace01",
+    "q4_plot.py": "3f8745427dc586848935bc471ba8d666aec11498f317c8bd53e31f269b0e29ca"
+  },
+  "runs": [],
+  "build_command": [
+    "make",
+    "-C",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/partb",
+    "ARCH=sm_89",
+    "NVCC='/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc'",
+    "NVCCFLAGS=-O3 -std=c++14 -arch=sm_89 '-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/common' '-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/include' '-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cccl-linux-x86_64-12.6.77-archive/include' '-L/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/lib' --cudart=shared"
+  ],
+  "check_malloc": "DEVICE,name=NVIDIA GeForce RTX 4060 Laptop GPU,managedMemory=1,concurrentManagedAccess=0,pageableMemoryAccess=0\nCHECK,n=1,scenario=1,every_element_and_guards=PASS\nCHECK,n=1,scenario=2,every_element_and_guards=PASS\nCHECK,n=1,scenario=3,every_element_and_guards=PASS\nCHECK,n=255,scenario=1,every_element_and_guards=PASS\nCHECK,n=255,scenario=2,every_element_and_guards=PASS\nCHECK,n=255,scenario=3,every_element_and_guards=PASS\nCHECK,n=256,scenario=1,every_element_and_guards=PASS\nCHECK,n=256,scenario=2,every_element_and_guards=PASS\nCHECK,n=256,scenario=3,every_element_and_guards=PASS\nCHECK,n=257,scenario=1,every_element_and_guards=PASS\nCHECK,n=257,scenario=2,every_element_and_guards=PASS\nCHECK,n=257,scenario=3,every_element_and_guards=PASS\nCHECK,n=513,scenario=1,every_element_and_guards=PASS\nCHECK,n=513,scenario=2,every_element_and_guards=PASS\nCHECK,n=513,scenario=3,every_element_and_guards=PASS\n",
+  "check_unified": "DEVICE,name=NVIDIA GeForce RTX 4060 Laptop GPU,managedMemory=1,concurrentManagedAccess=0,pageableMemoryAccess=0\nCHECK,n=1,scenario=1,every_element_and_guards=PASS\nCHECK,n=1,scenario=2,every_element_and_guards=PASS\nCHECK,n=1,scenario=3,every_element_and_guards=PASS\nCHECK,n=255,scenario=1,every_element_and_guards=PASS\nCHECK,n=255,scenario=2,every_element_and_guards=PASS\nCHECK,n=255,scenario=3,every_element_and_guards=PASS\nCHECK,n=256,scenario=1,every_element_and_guards=PASS\nCHECK,n=256,scenario=2,every_element_and_guards=PASS\nCHECK,n=256,scenario=3,every_element_and_guards=PASS\nCHECK,n=257,scenario=1,every_element_and_guards=PASS\nCHECK,n=257,scenario=2,every_element_and_guards=PASS\nCHECK,n=257,scenario=3,every_element_and_guards=PASS\nCHECK,n=513,scenario=1,every_element_and_guards=PASS\nCHECK,n=513,scenario=2,every_element_and_guards=PASS\nCHECK,n=513,scenario=3,every_element_and_guards=PASS\n",
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 621.14, 8188 MiB",
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0",
+    "cpu": "Intel(R) Core(TM) Ultra 9 185H",
+    "os": "Linux DESKTOP-7HTD4FP 5.15.153.1-microsoft-standard-WSL2 #1 SMP Fri Mar 29 23:14:13 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux"
+  }
+}

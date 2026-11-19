@@ -41,8 +41,26 @@ static float runScenario(int scenario, long n, float *dz, const float *dx, const
 {
     GpuTimer timer;
     timer.start();
-    (void)scenario; (void)n; (void)dz; (void)dx; (void)dy;
-    // TODO: dispatch on `scenario` and issue the launches described above.
+    // All launches use the default stream and are ordered. Offsets partition
+    // the array; the given kernel bounds-checks the last partial block.
+    switch (scenario) {
+        case 1:
+            for (long offset = 0; offset < n; ++offset) {
+                addKernel<<<1, 1>>>(n, (int)offset, dz, dx, dy);
+            }
+            break;
+        case 2:
+            for (long offset = 0; offset < n; offset += 256) {
+                addKernel<<<1, 256>>>(n, (int)offset, dz, dx, dy);
+            }
+            break;
+        case 3:
+            addKernel<<<(n + 255) / 256, 256>>>(n, 0, dz, dx, dy);
+            break;
+        default:
+            fprintf(stderr, "Invalid scenario: %d\n", scenario);
+            exit(EXIT_FAILURE);
+    }
     timer.stop();
     return timer.elapsed_ms();
 }

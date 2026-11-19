@@ -1,0 +1,20 @@
+PART B - saved measured output - K=5, N=5,000,000
+Commands: each program ran with arguments 1 5 10 50 100.
+Launch configuration (derived from source):
+S1: 5,000,000 launches; 1 block/launch; 1 thread/block.
+S2: 19,532 launches; 1 block/launch; 256 threads/block.
+S3: 1 launch; 19,532 blocks; 256 threads/block.
+Final-block writes are guarded by i < N.
+
+q1_cpu - original stdout lines:
+K=5 n=5000000 time_ms=13.690 checksum=15000000.0 PASSED
+
+q2_malloc - original stdout lines:
+K=5 scenario=1 time_ms=81292.750 checksum=15000000.0 PASSED
+K=5 scenario=2 time_ms=336.690 checksum=15000000.0 PASSED
+K=5 scenario=3 time_ms=0.356 checksum=15000000.0 PASSED
+
+q3_unified - original stdout lines:
+K=5 scenario=1 time_ms=74103.141 checksum=15000000.0 PASSED
+K=5 scenario=2 time_ms=306.979 checksum=15000000.0 PASSED
+K=5 scenario=3 time_ms=4.891 checksum=15000000.0 PASSED

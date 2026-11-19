@@ -1,0 +1,46 @@
+Part B Q4 predictions recorded before collecting Part B measurements
+Prepared November 18, 2026, with Codex assistance.
+
+The operation is z[i] = x[i] + y[i] for N = K * 1,000,000 FP32 elements.
+These predictions apply to the supplied timed regions, not total process time.
+
+CPU: Time should increase approximately in proportion to N once fixed overhead
+is small. Memory bandwidth, cache sizes, and the first writes to output memory
+may produce changes in slope.
+
+GPU scenario 1 (N separate single-thread launches): Expected to be slowest and
+approximately linear in N because each output incurs a separate kernel launch
+and uses almost none of the GPU's parallel capacity. Only K = 1, 5, 10 is tested.
+
+GPU scenario 2 (ceil(N/256) separate 256-thread launches): Expected to be much
+faster than scenario 1, but slower than a single grid launch. Launch count still
+grows with N, so the curve should be roughly linear once fixed overhead is small.
+The expected performance ordering is S1 slowest, then S2, then S3 fastest.
+
+GPU scenario 3 (one launch covering all elements): Expected to be fastest of the
+GPU cases, with a launch-overhead floor at small inputs and increasing time as
+memory traffic grows. At large N it should approach a bandwidth-limited linear
+trend. On a log-log plot, a linear-time trend has slope about one.
+
+CPU versus GPU: The CPU may outperform scenarios 1 and 2 because they spend so
+much time launching tiny kernels. The explicit-copy GPU single-launch case is
+expected to beat the CPU for sufficiently large arrays because its measured
+region excludes the explicit transfers and it exploits many GPU threads.
+
+Unified memory: The relative S1/S2/S3 ordering should remain similar. Each
+scenario uses fresh managed allocations initialized by the CPU, so this is a
+first-GPU-use measurement, without a data-warming pass or prefetch. Residency
+management may increase time, especially for S3 where launch overhead is small.
+The effect depends on WSL's supported memory model and must be interpreted
+alongside the actual timed boundaries; unified memory is not predicted to have
+a fixed slowdown or to be faster than explicit memory management.
+
+Fairness: Q2 performs host-to-device copies before its timer; Q3 may pay some
+residency/migration costs on first GPU use. These are different timing scopes.
+No ordering relative to CPU or between Q2/Q3 is guaranteed at every size.
+
+Protocol planned before running: build the supplied programs with their given
+optimization flags; use one complete measured sweep (single-run reporting is
+allowed by the handout). Keep the timer around every launch in a scenario.
+Use CUDA_MODULE_LOADING=EAGER consistently. Record all required results,
+validate checksums, and use the provided q4_plot.py unchanged to make the plots.

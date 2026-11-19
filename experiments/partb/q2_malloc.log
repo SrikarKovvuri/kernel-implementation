@@ -1,0 +1,26 @@
+K=1 scenario=1 time_ms=14639.486 checksum=3000000.0 PASSED
+RESULT,program=q2_malloc,scenario=1,K=1,n=1000000,time_ms=14639.486,checksum=3000000.0,correct=1
+K=1 scenario=2 time_ms=69.120 checksum=3000000.0 PASSED
+RESULT,program=q2_malloc,scenario=2,K=1,n=1000000,time_ms=69.120,checksum=3000000.0,correct=1
+K=1 scenario=3 time_ms=0.097 checksum=3000000.0 PASSED
+RESULT,program=q2_malloc,scenario=3,K=1,n=1000000,time_ms=0.097,checksum=3000000.0,correct=1
+K=5 scenario=1 time_ms=81292.750 checksum=15000000.0 PASSED
+RESULT,program=q2_malloc,scenario=1,K=5,n=5000000,time_ms=81292.750,checksum=15000000.0,correct=1
+K=5 scenario=2 time_ms=336.690 checksum=15000000.0 PASSED
+RESULT,program=q2_malloc,scenario=2,K=5,n=5000000,time_ms=336.690,checksum=15000000.0,correct=1
+K=5 scenario=3 time_ms=0.356 checksum=15000000.0 PASSED
+RESULT,program=q2_malloc,scenario=3,K=5,n=5000000,time_ms=0.356,checksum=15000000.0,correct=1
+K=10 scenario=1 time_ms=149405.172 checksum=30000000.0 PASSED
+RESULT,program=q2_malloc,scenario=1,K=10,n=10000000,time_ms=149405.172,checksum=30000000.0,correct=1
+K=10 scenario=2 time_ms=543.722 checksum=30000000.0 PASSED
+RESULT,program=q2_malloc,scenario=2,K=10,n=10000000,time_ms=543.722,checksum=30000000.0,correct=1
+K=10 scenario=3 time_ms=0.571 checksum=30000000.0 PASSED
+RESULT,program=q2_malloc,scenario=3,K=10,n=10000000,time_ms=0.571,checksum=30000000.0,correct=1
+K=50 scenario=2 time_ms=2752.882 checksum=150000000.0 PASSED
+RESULT,program=q2_malloc,scenario=2,K=50,n=50000000,time_ms=2752.882,checksum=150000000.0,correct=1
+K=50 scenario=3 time_ms=2.979 checksum=150000000.0 PASSED
+RESULT,program=q2_malloc,scenario=3,K=50,n=50000000,time_ms=2.979,checksum=150000000.0,correct=1
+K=100 scenario=2 time_ms=5650.068 checksum=300000000.0 PASSED
+RESULT,program=q2_malloc,scenario=2,K=100,n=100000000,time_ms=5650.068,checksum=300000000.0,correct=1
+K=100 scenario=3 time_ms=5.932 checksum=300000000.0 PASSED
+RESULT,program=q2_malloc,scenario=3,K=100,n=100000000,time_ms=5.932,checksum=300000000.0,correct=1

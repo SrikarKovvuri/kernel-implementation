@@ -1,0 +1,316 @@
+{
+  "runs": [
+    {
+      "program": "q1_cpu",
+      "arguments": [
+        "1",
+        "5",
+        "10",
+        "50",
+        "100"
+      ],
+      "process_wall_seconds": 1.7272073030000001,
+      "exit_code": 0
+    },
+    {
+      "program": "q2_malloc",
+      "arguments": [
+        "1",
+        "5",
+        "10",
+        "50",
+        "100"
+      ],
+      "process_wall_seconds": 254.84373507699996,
+      "exit_code": 0
+    },
+    {
+      "program": "q3_unified",
+      "arguments": [
+        "1",
+        "5",
+        "10",
+        "50",
+        "100"
+      ],
+      "process_wall_seconds": 247.29141451399994,
+      "exit_code": 0
+    }
+  ],
+  "rows": [
+    {
+      "program": "q1_cpu",
+      "K": "1",
+      "n": "1000000",
+      "time_ms": "1.552",
+      "checksum": "3000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q1_cpu",
+      "K": "5",
+      "n": "5000000",
+      "time_ms": "13.690",
+      "checksum": "15000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q1_cpu",
+      "K": "10",
+      "n": "10000000",
+      "time_ms": "47.905",
+      "checksum": "30000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q1_cpu",
+      "K": "50",
+      "n": "50000000",
+      "time_ms": "140.488",
+      "checksum": "150000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q1_cpu",
+      "K": "100",
+      "n": "100000000",
+      "time_ms": "326.706",
+      "checksum": "300000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "1",
+      "K": "1",
+      "n": "1000000",
+      "time_ms": "14639.486",
+      "checksum": "3000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "2",
+      "K": "1",
+      "n": "1000000",
+      "time_ms": "69.120",
+      "checksum": "3000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "3",
+      "K": "1",
+      "n": "1000000",
+      "time_ms": "0.097",
+      "checksum": "3000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "1",
+      "K": "5",
+      "n": "5000000",
+      "time_ms": "81292.750",
+      "checksum": "15000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "2",
+      "K": "5",
+      "n": "5000000",
+      "time_ms": "336.690",
+      "checksum": "15000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "3",
+      "K": "5",
+      "n": "5000000",
+      "time_ms": "0.356",
+      "checksum": "15000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "1",
+      "K": "10",
+      "n": "10000000",
+      "time_ms": "149405.172",
+      "checksum": "30000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "2",
+      "K": "10",
+      "n": "10000000",
+      "time_ms": "543.722",
+      "checksum": "30000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "3",
+      "K": "10",
+      "n": "10000000",
+      "time_ms": "0.571",
+      "checksum": "30000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "2",
+      "K": "50",
+      "n": "50000000",
+      "time_ms": "2752.882",
+      "checksum": "150000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "3",
+      "K": "50",
+      "n": "50000000",
+      "time_ms": "2.979",
+      "checksum": "150000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "2",
+      "K": "100",
+      "n": "100000000",
+      "time_ms": "5650.068",
+      "checksum": "300000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q2_malloc",
+      "scenario": "3",
+      "K": "100",
+      "n": "100000000",
+      "time_ms": "5.932",
+      "checksum": "300000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "1",
+      "K": "1",
+      "n": "1000000",
+      "time_ms": "15022.710",
+      "checksum": "3000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "2",
+      "K": "1",
+      "n": "1000000",
+      "time_ms": "60.372",
+      "checksum": "3000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "3",
+      "K": "1",
+      "n": "1000000",
+      "time_ms": "1.109",
+      "checksum": "3000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "1",
+      "K": "5",
+      "n": "5000000",
+      "time_ms": "74103.141",
+      "checksum": "15000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "2",
+      "K": "5",
+      "n": "5000000",
+      "time_ms": "306.979",
+      "checksum": "15000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "3",
+      "K": "5",
+      "n": "5000000",
+      "time_ms": "4.891",
+      "checksum": "15000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "1",
+      "K": "10",
+      "n": "10000000",
+      "time_ms": "146718.672",
+      "checksum": "30000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "2",
+      "K": "10",
+      "n": "10000000",
+      "time_ms": "575.363",
+      "checksum": "30000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "3",
+      "K": "10",
+      "n": "10000000",
+      "time_ms": "9.062",
+      "checksum": "30000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "2",
+      "K": "50",
+      "n": "50000000",
+      "time_ms": "3027.502",
+      "checksum": "150000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "3",
+      "K": "50",
+      "n": "50000000",
+      "time_ms": "44.780",
+      "checksum": "150000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "2",
+      "K": "100",
+      "n": "100000000",
+      "time_ms": "5906.985",
+      "checksum": "300000000.0",
+      "correct": "1"
+    },
+    {
+      "program": "q3_unified",
+      "scenario": "3",
+      "K": "100",
+      "n": "100000000",
+      "time_ms": "95.726",
+      "checksum": "300000000.0",
+      "correct": "1"
+    }
+  ]
+}
