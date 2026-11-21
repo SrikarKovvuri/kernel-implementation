@@ -22,20 +22,58 @@
 // Fill S (N x N, row-major) with the scaled scores: S[i,j] must end up equal
 // to scale * dot(Q[i,:], K[j,:]), where Q and K are (N, d) row-major. You
 // choose the thread/block decomposition.
+
+
+//global tells cuda this function is a kernel
 __global__ void scores_kernel(int N, int d, double scale,
                                const double *Q, const double *K, double *S)
 {
     // TODO (C1): compute the scores for the entries this thread owns.
-    (void)N; (void)d; (void)scale; (void)Q; (void)K; (void)S;
+    
+    
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    int col = blockIdx.x * blockDim.x + threadIdx.x;
+
+    if (row >= N || col >= N) return;
+    double sum = 0;
+    for (int i = 0; i < d; i++) {
+        sum += Q[row * d + i] * K[col * d + i];
+    }
+    S[row * N + col] = scale * sum;
+
 }
 
 // Replace S in place with its numerically safe row-wise softmax: subtract
 // each row's max before exponentiating, then divide by the row sum. You
 // choose how to parallelize the per-row reduction.
-__global__ void softmax_rows_kernel(int N, double *S)
+__global__ void softmax_rows_kernel(int N, double* S)
 {
-    // TODO (C1): safe row softmax of S.
-    (void)N; (void)S;
+    int row = blockIdx.x * blockDim.x + threadIdx.x;
+    if (row >= N) return;
+
+    // Pass 1: Find maximum
+    double max = S[row * N];
+
+    for (int col = 0; col < N; col++) {
+        double value = S[row * N + col];
+        if (value > max) {
+            max = value;
+        }
+    }
+
+    // Pass 2: Sum exponentials
+    double sum = 0.0;
+
+    for (int col = 0; col < N; col++) {
+        double value = S[row * N + col];
+        sum += exp(value - max);
+    }
+
+    // Pass 3: Normalize in place
+    for (int col = 0; col < N; col++) {
+        double value = S[row * N + col];
+        S[row * N + col] = exp(value - max) / sum;
+    }
 }
 
 // Fill O (N x d, row-major) with O[i,t] = sum_j P[i,j] * V[j,t], where P is
@@ -44,7 +82,19 @@ __global__ void softmax_rows_kernel(int N, double *S)
 __global__ void output_kernel(int N, int d, const double *P, const double *V, double *O)
 {
     // TODO (C1): compute the output entries this thread owns.
-    (void)N; (void)d; (void)P; (void)V; (void)O;
+    
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    int col = blockIdx.x * blockDim.x + threadIdx.x;
+
+    if (row >= N || col >= d) return;
+
+    double sum = 0.0;
+
+    for (int j = 0; j < N; j++) {
+        sum += P[row * N + j] * V[j * d + col];
+    }
+
+    O[row * d + col] = sum;
 }
 
 int main(int argc, char **argv)
@@ -78,6 +128,35 @@ int main(int argc, char **argv)
     //   scores_kernel<<<...>>>(a.N, a.d, scale, dQ, dK, dS);
     //   softmax_rows_kernel<<<...>>>(a.N, dS);
     //   output_kernel<<<...>>>(a.N, a.d, dS, dV, dO);
+    dim3 blockScores(16, 16);
+
+    dim3 gridScores(
+        (a.N + 15) / 16,
+        (a.N + 15) / 16
+    );
+
+    scores_kernel<<<gridScores, blockScores>>>(
+        a.N, a.d, scale, dQ, dK, dS
+    );
+
+    int threadsSoftmax = 256;
+    int blocksSoftmax = (a.N + 255) / 256;
+
+    softmax_rows_kernel<<<blocksSoftmax, threadsSoftmax>>>(
+        a.N, dS
+    );
+
+    dim3 blockOutput(16, 16);
+
+    dim3 gridOutput(
+        (a.d + 15) / 16,
+        (a.N + 15) / 16
+    );
+
+    output_kernel<<<gridOutput, blockOutput>>>(
+        a.N, a.d, dS, dV, dO
+    );
+
     cudaEventRecord(stopE);
     cudaEventSynchronize(stopE);
     float ms = 0.0f;
