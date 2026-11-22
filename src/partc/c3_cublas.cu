@@ -31,8 +31,18 @@
 // unchanged, so C3 will not match the reference until you fill it in.
 __global__ void softmax_rows_kernel(int N, double *S)
 {
-    // TODO (C3): safe row-wise softmax of S.
-    (void)N; (void)S;
+    // Reuse C1's one-thread-per-row algorithm to keep the softmax operation
+    // and its launch configuration identical in the cuBLAS comparison.
+    int row = blockIdx.x*blockDim.x + threadIdx.x;
+    if (row >= N) return;
+    double maximum = S[(size_t)row*N];
+    for (int col = 0; col < N; ++col)
+        maximum = fmax(maximum, S[(size_t)row*N+col]);
+    double sum = 0.0;
+    for (int col = 0; col < N; ++col)
+        sum += exp(S[(size_t)row*N+col]-maximum);
+    for (int col = 0; col < N; ++col)
+        S[(size_t)row*N+col] = exp(S[(size_t)row*N+col]-maximum)/sum;
 }
 
 int main(int argc, char **argv)
@@ -75,6 +85,18 @@ int main(int argc, char **argv)
     //      own grid/block/shared-memory configuration)
     //   3. O = P * V             (one cublasDgemm; result row-major N x d in dO)
     // Do not change the timing scaffold around this block.
+
+    // Row-major S is column-major S^T. The row-major inputs are seen as
+    // Q^T and K^T, so compute S^T = scale*K*Q^T with (T,N).
+    CUBLAS_CHECK(cublasDgemm(h, CUBLAS_OP_T, CUBLAS_OP_N,
+                            N, N, d, &alpha_s, dK, d, dQ, d,
+                            &beta0, dS, N));
+    softmax_rows_kernel<<<(N+255)/256, 256>>>(N, dS);
+    CUDA_CHECK(cudaGetLastError());
+    // Row-major O is column-major O^T = V^T*P^T: (N,N), dimensions d x N.
+    CUBLAS_CHECK(cublasDgemm(h, CUBLAS_OP_N, CUBLAS_OP_N,
+                            d, N, N, &alpha1, dV, d, dS, N,
+                            &beta0, dO, d));
 
     cudaEventRecord(stopE);
     cudaEventSynchronize(stopE);

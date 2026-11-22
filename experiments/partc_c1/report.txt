@@ -1,0 +1,49 @@
+C1: Naive attention in CUDA - review and measured results
+
+Required report line (checksum, median kernel milliseconds):
+623032.963,44.766
+
+Default size: N=2048, d=64, double precision.
+Hardware: NVIDIA GeForce RTX 4060 Laptop GPU, 621.14, 8188 MiB; Intel(R) Core(TM) Ultra 9 185H.
+CUDA compiler: 12.6.85; build -O3 -std=c++14 -arch=sm_89; WSL2.
+
+The scores kernel assigns one thread to each score and computes the scaled
+dot product Q[i,:] dot K[j,:]. The full N x N double scores matrix occupies
+32 MiB in device global memory at the default size. Softmax overwrites it
+in place, subtracting each row's maximum before exponentiating and dividing
+by the sum. The output kernel computes each element of P V with a dot product.
+Scores and output use 16x16 blocks. Softmax uses 256 threads per block, with
+one thread owning each row. At N=2048 this gives only eight softmax blocks;
+the serial row scans and repeated exponentials are performance limitations
+of this valid naive baseline, not correctness failures.
+
+The existing driver sums all N*d output values for the checksum and prints
+the required comma-separated line with three decimals. CUDA events enclose
+all three kernel launches; synchronization on the stop event ensures they
+finish before elapsed time is read. Allocation, input generation, explicit
+copies, the CPU checksum, printing, and cleanup are outside this interval.
+
+Protocol: CUDA_MODULE_LOADING=EAGER; one discarded full-size warm-up process,
+then five fresh-process measurements. Each process measures its first pipeline;
+this is not a warmed-data, repeatedly launched pipeline within one process.
+Measured times (ms): 46.142, 43.410, 44.084, 44.766, 47.342.
+Median: 44.766 ms; mean: 45.149 ms;
+range: 43.410-47.342 ms. All default runs printed the same checksum.
+
+Correctness: all nine small/edge sizes passed the independent public-grader
+CPU reference element by element at absolute tolerance 1e-6. They include
+the grader's (8,4), (129,4), (257,8) cases plus singleton, unaligned shapes,
+and d=1024. Printed tensors use nine significant digits, limiting the
+precision of these comparisons. The full default tensor is not dumped by
+the unchanged driver, so full-size element-wise validation is not claimed.
+Additional direct-kernel tests passed with mixed-sign values, large logits,
+softmax row-sum checks, finite-value checks, and output buffer guards.
+
+The student's C1 source, common.h, and Makefile were not modified.
+Raw build/output logs and exact source hashes are preserved alongside this
+report in experiments/partc_c1. The user captured the saved measured_04.log
+output; the verified screenshot is c1_output_screenshot.png in this folder.
+Its original location and SHA-256 are recorded in screenshot_evidence.json.
+AI-use disclosure: Codex reviewed the implementation, built and tested it,
+collected timings, and drafted this C1 results text. The C1 kernels were
+provided by the student and left unchanged.

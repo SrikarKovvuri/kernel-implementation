@@ -1,0 +1,2 @@
+STABILITY,magnitude=1,N=33,d=19,max_abs_error=5.55111512313e-16,max_rowsum_error=4.4408920985e-16,guards=PASS,PASS
+STABILITY,magnitude=1000,N=33,d=19,max_abs_error=2.1245794013e-10,max_rowsum_error=0,guards=PASS,PASS

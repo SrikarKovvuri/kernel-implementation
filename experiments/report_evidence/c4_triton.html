@@ -1,0 +1,31 @@
+<!doctype html><meta charset="utf-8"><title>HPML recorded output</title>
+    <style>body{margin:28px;background:#fff;color:#17232d;font-family:Arial,sans-serif}h1{font-size:27px;margin:0 0 10px}p{font-size:16px;line-height:1.4}h2{font-size:19px;margin:0 0 5px}.source{font-size:13px;color:#53616f;margin-bottom:9px}section{border:1px solid #b6c5ce;padding:15px;margin-top:16px;background:#f8fafc}pre{font:17px/1.5 Consolas,monospace;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.note{color:#4c5b66}</style><style>pre{font-size:20px;line-height:1.4}</style><h1>C4 - Triton attention and PyTorch SDPA</h1><p>Executed notebook: N=2048, d=64, FP32. Correctness, timing, edge cases, and observed SDPA dispatch.</p><p class="note">Screenshot of a local saved-log viewer. Output below is recorded program stdout, not a live terminal session.</p><section><h2>Recorded notebook stdout</h2><div class="source">experiments\partc_c4\stdout.log</div><pre>GPU: NVIDIA GeForce RTX 4060 Laptop GPU
+PyTorch: 2.7.1+cu126 | Triton: 3.3.1 | CUDA: 12.6
+
+reference O shape (2048, 64) checksum 265.43853759765625
+
+Triton checksum 265.4385070800781 | reference 265.43853759765625
+max abs error vs reference: 4.023313522338867e-07
+
+Benchmark round 1 {&#x27;triton_ms&#x27;: 0.8417280077934265, &#x27;sdpa_ms&#x27;: 0.5662048634935598}
+
+Benchmark round 2 {&#x27;sdpa_ms&#x27;: 0.454454558306053, &#x27;triton_ms&#x27;: 0.6165198589626112}
+
+Benchmark round 3 {&#x27;triton_ms&#x27;: 0.6184265704478248, &#x27;sdpa_ms&#x27;: 0.41565365081324296}
+Reported latency: median of three do_bench mean latencies
+Triton attention: 0.618 ms
+PyTorch SDPA:     0.454 ms
+SDPA is 1.4x faster than Triton at this size
+
+PASS {&#x27;N&#x27;: 1, &#x27;d&#x27;: 1, &#x27;strided&#x27;: False, &#x27;magnitude&#x27;: 1, &#x27;max_abs_error&#x27;: 0.0}
+
+PASS {&#x27;N&#x27;: 63, &#x27;d&#x27;: 32, &#x27;strided&#x27;: False, &#x27;magnitude&#x27;: 1, &#x27;max_abs_error&#x27;: 5.960464477539062e-07}
+PASS {&#x27;N&#x27;: 65, &#x27;d&#x27;: 64, &#x27;strided&#x27;: False, &#x27;magnitude&#x27;: 1, &#x27;max_abs_error&#x27;: 1.1920928955078125e-06}
+PASS {&#x27;N&#x27;: 129, &#x27;d&#x27;: 19, &#x27;strided&#x27;: False, &#x27;magnitude&#x27;: 1, &#x27;max_abs_error&#x27;: 3.5762786865234375e-07}
+
+PASS {&#x27;N&#x27;: 257, &#x27;d&#x27;: 64, &#x27;strided&#x27;: True, &#x27;magnitude&#x27;: 1, &#x27;max_abs_error&#x27;: 5.662441253662109e-07}
+PASS {&#x27;N&#x27;: 129, &#x27;d&#x27;: 128, &#x27;strided&#x27;: False, &#x27;magnitude&#x27;: 1, &#x27;max_abs_error&#x27;: 8.344650268554688e-07}
+PASS {&#x27;N&#x27;: 129, &#x27;d&#x27;: 64, &#x27;strided&#x27;: False, &#x27;magnitude&#x27;: 10, &#x27;max_abs_error&#x27;: 6.277859210968018e-05}
+
+SDPA operators: [&#x27;aten::scaled_dot_product_attention&#x27;, &#x27;aten::_scaled_dot_product_efficient_attention&#x27;]
+SDPA max abs error: 4.917383193969727e-07</pre></section>

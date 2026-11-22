@@ -1,0 +1,473 @@
+{
+  "protocol": "Same-process resident-data execution. Three warm-up pipelines per variant excluded, then ten rounds in rotating variant order. Original kernels included without edits; identical launch configurations and cuBLAS operand mapping. CUDA events cover kernels/GEMMs only. CPU reference, copies, allocation and handle creation excluded. All 39 outputs checked element-wise against full CPU reference.",
+  "build_command": [
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc",
+    "-O3",
+    "-std=c++14",
+    "-arch=sm_89",
+    "--cudart=shared",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/include",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cccl-linux-x86_64-12.6.77-archive/include",
+    "-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/libcublas-linux-x86_64-12.6.4.1-archive/include",
+    "-L/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/lib",
+    "-L/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/libcublas-linux-x86_64-12.6.4.1-archive/lib",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/partc_final/benchmark_warm.cu",
+    "-lcublas",
+    "-o",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/partc_final/benchmark_warm"
+  ],
+  "runs": [
+    {
+      "program": "c1_naive",
+      "round": "-3",
+      "phase": "warmup",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "149.897858",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "-3",
+      "phase": "warmup",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "52.959488",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "-3",
+      "phase": "warmup",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "627.877502",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c1_naive",
+      "round": "-2",
+      "phase": "warmup",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "98.451805",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "-2",
+      "phase": "warmup",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "8.730656",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "-2",
+      "phase": "warmup",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "14.480096",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c1_naive",
+      "round": "-1",
+      "phase": "warmup",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "16.476416",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "-1",
+      "phase": "warmup",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "8.756992",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "-1",
+      "phase": "warmup",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "14.454272",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c1_naive",
+      "round": "0",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "16.421312",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "0",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "8.725280",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "0",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "14.468480",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "1",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "8.811296",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "1",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "14.437536",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c1_naive",
+      "round": "1",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "16.457697",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "2",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "14.484096",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c1_naive",
+      "round": "2",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "16.416351",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "2",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "8.816224",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c1_naive",
+      "round": "3",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "12.915936",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "3",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "6.433824",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "3",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "10.463904",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "4",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "6.545536",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "4",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "10.583328",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c1_naive",
+      "round": "4",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "11.944416",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "5",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "10.455904",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c1_naive",
+      "round": "5",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "11.937632",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "5",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "6.306656",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c1_naive",
+      "round": "6",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "11.889568",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "6",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "6.351008",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "6",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "10.497568",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "7",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "6.356064",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "7",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "10.506336",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c1_naive",
+      "round": "7",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "11.920768",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "8",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "10.639392",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c1_naive",
+      "round": "8",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "11.891392",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "8",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "6.382368",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c1_naive",
+      "round": "9",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "12.301088",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    },
+    {
+      "program": "c2_tiled",
+      "round": "9",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "6.329184",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.10134124043e-13"
+    },
+    {
+      "program": "c3_cublas",
+      "round": "9",
+      "phase": "measured",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "10.514080",
+      "checksum": "623032.963445200",
+      "max_abs_error": "1.06581410364e-14"
+    }
+  ],
+  "summary": {
+    "c1_naive": {
+      "checksum": 623032.9634452,
+      "median_ms": 12.122752,
+      "mean_ms": 13.409616,
+      "min_ms": 11.889568,
+      "max_ms": 16.457697,
+      "times_ms": [
+        16.421312,
+        16.457697,
+        16.416351,
+        12.915936,
+        11.944416,
+        11.937632,
+        11.889568,
+        11.920768,
+        11.891392,
+        12.301088
+      ],
+      "max_abs_error": 1.06581410364e-14
+    },
+    "c2_tiled": {
+      "checksum": 623032.9634452,
+      "median_ms": 6.4080960000000005,
+      "mean_ms": 7.105744,
+      "min_ms": 6.306656,
+      "max_ms": 8.816224,
+      "times_ms": [
+        8.72528,
+        8.811296,
+        8.816224,
+        6.433824,
+        6.545536,
+        6.306656,
+        6.351008,
+        6.356064,
+        6.382368,
+        6.329184
+      ],
+      "max_abs_error": 1.10134124043e-13
+    },
+    "c3_cublas": {
+      "checksum": 623032.9634452,
+      "median_ms": 10.548704,
+      "mean_ms": 11.7050624,
+      "min_ms": 10.455904,
+      "max_ms": 14.484096,
+      "times_ms": [
+        14.46848,
+        14.437536,
+        14.484096,
+        10.463904,
+        10.583328,
+        10.455904,
+        10.497568,
+        10.506336,
+        10.639392,
+        10.51408
+      ],
+      "max_abs_error": 1.06581410364e-14
+    }
+  }
+}

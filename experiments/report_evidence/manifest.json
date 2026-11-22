@@ -1,0 +1,248 @@
+[
+  {
+    "name": "a_q1_500",
+    "title": "Part A Q1 - 500",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q1_500.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q1_500.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q1\\run_16_measured_500.log"
+    ],
+    "sha256": "5eeb7773b0e5c4670402bb3f21f2b0a212327b046a288ad4182f99ec33eefa7f"
+  },
+  {
+    "name": "a_q1_1000",
+    "title": "Part A Q1 - 1000",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q1_1000.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q1_1000.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q1\\run_15_measured_1000.log"
+    ],
+    "sha256": "c28a09cc1106d360ac0fc0749e749a82212535a0185691ccbc81c6e92276403b"
+  },
+  {
+    "name": "a_q1_2000",
+    "title": "Part A Q1 - 2000",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q1_2000.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q1_2000.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q1\\run_11_measured_2000.log"
+    ],
+    "sha256": "64d8f07519251c5b988c846f36f04162c08c4a171b2cbd79eb03056a3f0ef7df"
+  },
+  {
+    "name": "a_q2_500",
+    "title": "Part A Q2 - 500",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q2_500.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q2_500.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q2\\run_29_measured_vecadd00_500.log",
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q2\\run_34_measured_vecadd01_500.log"
+    ],
+    "sha256": "b98344f000d11fcd97c1393808bf6bbe293c9a00722ee5cdb5e598c277648215"
+  },
+  {
+    "name": "a_q2_1000",
+    "title": "Part A Q2 - 1000",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q2_1000.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q2_1000.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q2\\run_06_measured_vecadd00_1000.log",
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q2\\run_17_measured_vecadd01_1000.log"
+    ],
+    "sha256": "3ceaa7f2fd38a54ad5e27b4cbec9a0754ff0ab53ffae68e4db43e6535863b367"
+  },
+  {
+    "name": "a_q2_2000",
+    "title": "Part A Q2 - 2000",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q2_2000.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q2_2000.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q2\\run_09_measured_vecadd00_2000.log",
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q2\\run_26_measured_vecadd01_2000.log"
+    ],
+    "sha256": "82325cbe62ea2a03634d361bf83b427b780991af156a523bfaf2bda56770e246"
+  },
+  {
+    "name": "a_q3_256",
+    "title": "Part A Q3 - 256",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q3_256.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q3_256.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q3\\eager_run_07_measured_256.log"
+    ],
+    "sha256": "122af2f94256496491187158e878638018cb83cf7fad14a7c0f0bc7df17fca8d"
+  },
+  {
+    "name": "a_q3_512",
+    "title": "Part A Q3 - 512",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q3_512.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q3_512.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q3\\eager_run_03_measured_512.log"
+    ],
+    "sha256": "f8d8531ca0b2860a6ee96c486aa39b2a29bc266b9c60d4547374e53f90fb496d"
+  },
+  {
+    "name": "a_q3_1024",
+    "title": "Part A Q3 - 1024",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q3_1024.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q3_1024.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q3\\eager_run_12_measured_1024.log"
+    ],
+    "sha256": "aefb5c5993b5a81fbacb2a16a4561acbb901d5a39ada982275921609a5cf4d42"
+  },
+  {
+    "name": "a_q4_256",
+    "title": "Part A Q4 - 256",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q4_256.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q4_256.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q4\\run_14_measured_matmult00_256.log",
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q4\\run_19_measured_matmult01_256.log"
+    ],
+    "sha256": "5b60711318bf4f3b6d1d3c884200b1dba2cf6fef1a9e7a2463886c19045097e0"
+  },
+  {
+    "name": "a_q4_512",
+    "title": "Part A Q4 - 512",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q4_512.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q4_512.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q4\\run_29_measured_matmult00_512.log",
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q4\\run_26_measured_matmult01_512.log"
+    ],
+    "sha256": "a9d67af334f2af153b83e3da458a3cc4faa9c03ec3bf456cad2a21d6d0ced80e"
+  },
+  {
+    "name": "a_q4_1024",
+    "title": "Part A Q4 - 1024",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q4_1024.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\a_q4_1024.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q4\\run_31_measured_matmult00_1024.log",
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\parta_q4\\run_36_measured_matmult01_1024.log"
+    ],
+    "sha256": "89d6056c9a71e3e7d6bf555f2197791458c5570efa0244b3c09fdb868cf380e0"
+  },
+  {
+    "name": "b_k1",
+    "title": "Part B - K=1 million",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\b_k1.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\b_k1.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partb\\screenshots\\K1_output.txt"
+    ],
+    "sha256": "c5da0f45f7362037ad0b956340361506b24c39a88db53ee56e6d0aacba772c01"
+  },
+  {
+    "name": "b_k5",
+    "title": "Part B - K=5 million",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\b_k5.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\b_k5.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partb\\screenshots\\K5_output.txt"
+    ],
+    "sha256": "4167c427e66cb6c1d571ed099d78195952936d8bae9bcd1048353367ab7ba464"
+  },
+  {
+    "name": "b_k10",
+    "title": "Part B - K=10 million",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\b_k10.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\b_k10.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partb\\screenshots\\K10_output.txt"
+    ],
+    "sha256": "02aa8ba210053799313890fe06dd4ac70b84b9b5be3091939529715c3c41dfd3"
+  },
+  {
+    "name": "b_k50",
+    "title": "Part B - K=50 million",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\b_k50.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\b_k50.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partb\\screenshots\\K50_output.txt"
+    ],
+    "sha256": "fd10a15593f82fd912ef762ad2601fa940e16d62eea02e0329cadedf53e22869"
+  },
+  {
+    "name": "b_k100",
+    "title": "Part B - K=100 million",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\b_k100.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\b_k100.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partb\\screenshots\\K100_output.txt"
+    ],
+    "sha256": "e7601441878046b27961046b5bd7cf6f3dc7f5be1ccea5b4d45a6358b1ee7bf0"
+  },
+  {
+    "name": "c1_naive",
+    "title": "Part C - c1_naive",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\c1_naive.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\c1_naive.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partc_final\\c1_naive_01.log"
+    ],
+    "sha256": "242dcc6bd1357a348b492ad958f3a66dc8ff3bf09f40c2677561d6d08c180c37"
+  },
+  {
+    "name": "c2_tiled",
+    "title": "Part C - c2_tiled",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\c2_tiled.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\c2_tiled.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partc_final\\c2_tiled_05.log"
+    ],
+    "sha256": "2960dff38dbafd664d209a0aaebf530ce0154a84ae88779e2cef311213ddf70d"
+  },
+  {
+    "name": "c3_cublas",
+    "title": "Part C - c3_cublas",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\c3_cublas.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\c3_cublas.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partc_final\\c3_cublas_05.log"
+    ],
+    "sha256": "9c999cc3d91fadd120a3549b8365493e24ee1eb99f290d9012841daa6bbd9d31"
+  },
+  {
+    "name": "warm_c1_naive",
+    "title": "Part C steady-state - c1_naive",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\warm_c1_naive.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\warm_c1_naive.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partc_final\\warm_stdout.log"
+    ],
+    "sha256": "99029c2ded208a900bcaf3bd76324deb81ebb8ff11007792543b07c81d7e76bf"
+  },
+  {
+    "name": "warm_c2_tiled",
+    "title": "Part C steady-state - c2_tiled",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\warm_c2_tiled.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\warm_c2_tiled.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partc_final\\warm_stdout.log"
+    ],
+    "sha256": "80b4b02d33a678b93e72b58077c9b15fdbd6eac5176524ad2db1654312a93248"
+  },
+  {
+    "name": "warm_c3_cublas",
+    "title": "Part C steady-state - c3_cublas",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\warm_c3_cublas.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\warm_c3_cublas.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partc_final\\warm_stdout.log"
+    ],
+    "sha256": "c0820065c082dc0b83f306e43344683dc6c3c2d031405ea66d11053e40ace73a"
+  },
+  {
+    "name": "c4_triton",
+    "title": "C4 - Triton attention and PyTorch SDPA",
+    "image": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\c4_triton.png",
+    "html": "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\report_evidence\\c4_triton.html",
+    "sources": [
+      "C:\\Users\\Srikars Den\\OneDrive\\Desktop\\hpml\\HPML_HW3_starter\\experiments\\partc_c4\\stdout.log"
+    ],
+    "sha256": "e4dc15acbafdc6d8c129daadafbedcb33cc1587eb75312e7110328847c76e200"
+  }
+]

@@ -1,0 +1,96 @@
+{
+  "N": 2048,
+  "d": 64,
+  "dtype": "torch.float32",
+  "BM": 64,
+  "BN": 64,
+  "num_warps": 4,
+  "num_stages": 2,
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "torch": "2.7.1+cu126",
+  "triton": "3.3.1",
+  "cuda": "12.6",
+  "checksum": 265.4385070800781,
+  "reference_checksum": 265.43853759765625,
+  "max_abs_error": 4.023313522338867e-07,
+  "triton_ms": 0.6184265704478248,
+  "sdpa_ms": 0.454454558306053,
+  "sdpa_max_abs_error": 4.917383193969727e-07,
+  "backend_ops": [
+    "aten::scaled_dot_product_attention",
+    "aten::_scaled_dot_product_efficient_attention"
+  ],
+  "validation": [
+    {
+      "N": 1,
+      "d": 1,
+      "strided": false,
+      "magnitude": 1,
+      "max_abs_error": 0.0
+    },
+    {
+      "N": 63,
+      "d": 32,
+      "strided": false,
+      "magnitude": 1,
+      "max_abs_error": 5.960464477539062e-07
+    },
+    {
+      "N": 65,
+      "d": 64,
+      "strided": false,
+      "magnitude": 1,
+      "max_abs_error": 1.1920928955078125e-06
+    },
+    {
+      "N": 129,
+      "d": 19,
+      "strided": false,
+      "magnitude": 1,
+      "max_abs_error": 3.5762786865234375e-07
+    },
+    {
+      "N": 257,
+      "d": 64,
+      "strided": true,
+      "magnitude": 1,
+      "max_abs_error": 5.662441253662109e-07
+    },
+    {
+      "N": 129,
+      "d": 128,
+      "strided": false,
+      "magnitude": 1,
+      "max_abs_error": 8.344650268554688e-07
+    },
+    {
+      "N": 129,
+      "d": 64,
+      "strided": false,
+      "magnitude": 10,
+      "max_abs_error": 6.277859210968018e-05
+    }
+  ],
+  "benchmark_rounds": [
+    {
+      "triton_ms": 0.8417280077934265,
+      "sdpa_ms": 0.5662048634935598
+    },
+    {
+      "sdpa_ms": 0.454454558306053,
+      "triton_ms": 0.6165198589626112
+    },
+    {
+      "triton_ms": 0.6184265704478248,
+      "sdpa_ms": 0.41565365081324296
+    }
+  ],
+  "timestamp_utc": "2026-11-22T04:22:39.891312+00:00",
+  "notebook_source_sha256": "7be11624597c03211da149bcc1c8e6691a3b33e9233b1caa5f59fb24be1789ae",
+  "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, 621.14",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "command": [
+    "/mnt/c/Users/SRIKAR~2/OneDrive/Desktop/hpml/tmp/c4-venv/bin/python",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/experiments/partc_c4/run_notebook.py"
+  ]
+}

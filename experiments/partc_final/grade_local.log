@@ -1,0 +1,3 @@
+[grade_local.py] mode=gpu arch=sm_89 host=DESKTOP-7HTD4FP
+[grade_local.py] Wrote /mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/results.json
+[grade_local.py] results.json validated against results.schema.json: OK

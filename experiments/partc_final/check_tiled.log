@@ -1,0 +1,5 @@
+CHECK,N=257,d=19,kind=1,max_abs_error=2.53269627493e-16,guards=PASS,PASS
+CHECK,N=257,d=19,kind=2,max_abs_error=0,guards=PASS,PASS
+CHECK,N=129,d=129,kind=3,max_abs_error=3.46944695195e-17,guards=PASS,PASS
+CHECK,N=3,d=1024,kind=1,max_abs_error=2.22044604925e-16,guards=PASS,PASS
+CHECK,N=2048,d=64,kind=0,max_abs_error=1.10134124043e-13,guards=PASS,PASS

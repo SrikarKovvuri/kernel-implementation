@@ -1,0 +1,3 @@
+make: Entering directory '/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/partc'
+'/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc' -O3 -std=c++14 -arch=sm_89 '-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/include' '-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cccl-linux-x86_64-12.6.77-archive/include' '-L/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/lib' --cudart=shared c1_naive.cu -o c1_naive
+make: Leaving directory '/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/partc'

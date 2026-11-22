@@ -1,0 +1,402 @@
+{
+  "started_utc": "2026-11-21T04:49:47.880056+00:00",
+  "source_sha256": {
+    "c1_naive.cu": "f3f514083e4fbe2750ea38943dd7284fbb1a0a48abca1100a6899fff9e58eb93",
+    "c2_tiled.cu": "435087489fa9657627dd6665f055012bce6856f17ddcf050f9a328781b9003b6",
+    "c3_cublas.cu": "a2ec90ed4d99be31517bbcb13d6ec4a1ea0c66d142239d9d40732e79b514829a",
+    "common.h": "c05af533fc4e13ee2eeb98679445a93aaa09e99c050f2d9aa8742df3ab75791a",
+    "Makefile": "bf847833715b10b3f0362cc1319a145ec199a91421856b57dd9a576b22d2bd83"
+  },
+  "correctness": [
+    {
+      "program": "c1_naive",
+      "N": 1,
+      "d": 1,
+      "max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "program": "c1_naive",
+      "N": 8,
+      "d": 4,
+      "max_abs_error": 4.863658087383982e-10,
+      "passed": true
+    },
+    {
+      "program": "c1_naive",
+      "N": 17,
+      "d": 19,
+      "max_abs_error": 4.990053481535028e-09,
+      "passed": true
+    },
+    {
+      "program": "c1_naive",
+      "N": 33,
+      "d": 65,
+      "max_abs_error": 4.7637662703436945e-08,
+      "passed": true
+    },
+    {
+      "program": "c1_naive",
+      "N": 63,
+      "d": 64,
+      "max_abs_error": 2.9409774171540448e-08,
+      "passed": true
+    },
+    {
+      "program": "c1_naive",
+      "N": 129,
+      "d": 4,
+      "max_abs_error": 4.875240211532628e-10,
+      "passed": true
+    },
+    {
+      "program": "c1_naive",
+      "N": 257,
+      "d": 8,
+      "max_abs_error": 4.855101876088952e-09,
+      "passed": true
+    },
+    {
+      "program": "c1_naive",
+      "N": 129,
+      "d": 31,
+      "max_abs_error": 4.989987534287366e-09,
+      "passed": true
+    },
+    {
+      "program": "c1_naive",
+      "N": 3,
+      "d": 1024,
+      "max_abs_error": 4.996355329467406e-08,
+      "passed": true
+    },
+    {
+      "program": "c2_tiled",
+      "N": 1,
+      "d": 1,
+      "max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "program": "c2_tiled",
+      "N": 8,
+      "d": 4,
+      "max_abs_error": 4.863658087383982e-10,
+      "passed": true
+    },
+    {
+      "program": "c2_tiled",
+      "N": 17,
+      "d": 19,
+      "max_abs_error": 4.990053481535028e-09,
+      "passed": true
+    },
+    {
+      "program": "c2_tiled",
+      "N": 33,
+      "d": 65,
+      "max_abs_error": 4.7637662703436945e-08,
+      "passed": true
+    },
+    {
+      "program": "c2_tiled",
+      "N": 63,
+      "d": 64,
+      "max_abs_error": 2.9409774171540448e-08,
+      "passed": true
+    },
+    {
+      "program": "c2_tiled",
+      "N": 129,
+      "d": 4,
+      "max_abs_error": 4.875240211532628e-10,
+      "passed": true
+    },
+    {
+      "program": "c2_tiled",
+      "N": 257,
+      "d": 8,
+      "max_abs_error": 4.855101876088952e-09,
+      "passed": true
+    },
+    {
+      "program": "c2_tiled",
+      "N": 129,
+      "d": 31,
+      "max_abs_error": 4.989987534287366e-09,
+      "passed": true
+    },
+    {
+      "program": "c2_tiled",
+      "N": 3,
+      "d": 1024,
+      "max_abs_error": 4.996355329467406e-08,
+      "passed": true
+    },
+    {
+      "program": "c3_cublas",
+      "N": 1,
+      "d": 1,
+      "max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "program": "c3_cublas",
+      "N": 8,
+      "d": 4,
+      "max_abs_error": 4.863658087383982e-10,
+      "passed": true
+    },
+    {
+      "program": "c3_cublas",
+      "N": 17,
+      "d": 19,
+      "max_abs_error": 4.990053481535028e-09,
+      "passed": true
+    },
+    {
+      "program": "c3_cublas",
+      "N": 33,
+      "d": 65,
+      "max_abs_error": 4.7637662703436945e-08,
+      "passed": true
+    },
+    {
+      "program": "c3_cublas",
+      "N": 63,
+      "d": 64,
+      "max_abs_error": 2.9409774171540448e-08,
+      "passed": true
+    },
+    {
+      "program": "c3_cublas",
+      "N": 129,
+      "d": 4,
+      "max_abs_error": 4.875240211532628e-10,
+      "passed": true
+    },
+    {
+      "program": "c3_cublas",
+      "N": 257,
+      "d": 8,
+      "max_abs_error": 4.855101876088952e-09,
+      "passed": true
+    },
+    {
+      "program": "c3_cublas",
+      "N": 129,
+      "d": 31,
+      "max_abs_error": 4.989987534287366e-09,
+      "passed": true
+    },
+    {
+      "program": "c3_cublas",
+      "N": 3,
+      "d": 1024,
+      "max_abs_error": 4.996355329467406e-08,
+      "passed": true
+    }
+  ],
+  "runs": [
+    {
+      "program": "c1_naive",
+      "trial": 0,
+      "phase": "warmup",
+      "checksum": 623032.963445,
+      "time_ms": 21.959,
+      "output": "623032.963,21.959"
+    },
+    {
+      "program": "c2_tiled",
+      "trial": 0,
+      "phase": "warmup",
+      "checksum": 623032.963445,
+      "time_ms": 12.049,
+      "output": "623032.963,12.049"
+    },
+    {
+      "program": "c3_cublas",
+      "trial": 0,
+      "phase": "warmup",
+      "checksum": 623032.963445,
+      "time_ms": 631.156,
+      "output": "623032.963,631.156"
+    },
+    {
+      "program": "c1_naive",
+      "trial": 1,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 20.005,
+      "output": "623032.963,20.005"
+    },
+    {
+      "program": "c2_tiled",
+      "trial": 1,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 12.688,
+      "output": "623032.963,12.688"
+    },
+    {
+      "program": "c3_cublas",
+      "trial": 1,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 602.219,
+      "output": "623032.963,602.219"
+    },
+    {
+      "program": "c1_naive",
+      "trial": 2,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 19.43,
+      "output": "623032.963,19.430"
+    },
+    {
+      "program": "c2_tiled",
+      "trial": 2,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 12.252,
+      "output": "623032.963,12.252"
+    },
+    {
+      "program": "c3_cublas",
+      "trial": 2,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 590.761,
+      "output": "623032.963,590.761"
+    },
+    {
+      "program": "c1_naive",
+      "trial": 3,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 19.834,
+      "output": "623032.963,19.834"
+    },
+    {
+      "program": "c2_tiled",
+      "trial": 3,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 17.486,
+      "output": "623032.963,17.486"
+    },
+    {
+      "program": "c3_cublas",
+      "trial": 3,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 543.291,
+      "output": "623032.963,543.291"
+    },
+    {
+      "program": "c1_naive",
+      "trial": 4,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 22.114,
+      "output": "623032.963,22.114"
+    },
+    {
+      "program": "c2_tiled",
+      "trial": 4,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 14.268,
+      "output": "623032.963,14.268"
+    },
+    {
+      "program": "c3_cublas",
+      "trial": 4,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 561.963,
+      "output": "623032.963,561.963"
+    },
+    {
+      "program": "c1_naive",
+      "trial": 5,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 21.0,
+      "output": "623032.963,21.000"
+    },
+    {
+      "program": "c2_tiled",
+      "trial": 5,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 13.15,
+      "output": "623032.963,13.150"
+    },
+    {
+      "program": "c3_cublas",
+      "trial": 5,
+      "phase": "measured",
+      "checksum": 623032.963445,
+      "time_ms": 568.958,
+      "output": "623032.963,568.958"
+    }
+  ],
+  "protocol": "CUDA_MODULE_LOADING=EAGER. One excluded fresh-process run per program, then five interleaved fresh-process default-size measurements. Events enclose the supplied pipeline. C3 includes first-GEMM overhead inside the timed region; handle creation is outside.",
+  "extra_checks": "CHECK,N=257,d=19,kind=1,max_abs_error=2.53269627493e-16,guards=PASS,PASS\nCHECK,N=257,d=19,kind=2,max_abs_error=0,guards=PASS,PASS\nCHECK,N=129,d=129,kind=3,max_abs_error=3.46944695195e-17,guards=PASS,PASS\nCHECK,N=3,d=1024,kind=1,max_abs_error=2.22044604925e-16,guards=PASS,PASS\nCHECK,N=2048,d=64,kind=0,max_abs_error=1.10134124043e-13,guards=PASS,PASS\n",
+  "summary": {
+    "c1_naive": {
+      "checksum": 623032.963445,
+      "median_ms": 20.005,
+      "mean_ms": 20.4766,
+      "min_ms": 19.43,
+      "max_ms": 22.114,
+      "times_ms": [
+        20.005,
+        19.43,
+        19.834,
+        22.114,
+        21.0
+      ]
+    },
+    "c2_tiled": {
+      "checksum": 623032.963445,
+      "median_ms": 13.15,
+      "mean_ms": 13.9688,
+      "min_ms": 12.252,
+      "max_ms": 17.486,
+      "times_ms": [
+        12.688,
+        12.252,
+        17.486,
+        14.268,
+        13.15
+      ]
+    },
+    "c3_cublas": {
+      "checksum": 623032.963445,
+      "median_ms": 568.958,
+      "mean_ms": 573.4384,
+      "min_ms": 543.291,
+      "max_ms": 602.219,
+      "times_ms": [
+        602.219,
+        590.761,
+        543.291,
+        561.963,
+        568.958
+      ]
+    }
+  },
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 621.14, 8188 MiB",
+    "cpu": "Intel(R) Core(TM) Ultra 9 185H",
+    "cuda": "12.6.85",
+    "cublas": "12.6.4.1",
+    "os": "Linux DESKTOP-7HTD4FP 5.15.153.1-microsoft-standard-WSL2 #1 SMP Fri Mar 29 23:14:13 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux"
+  },
+  "sources_unchanged": true,
+  "finished_utc": "2026-11-21T04:57:34.708325+00:00"
+}

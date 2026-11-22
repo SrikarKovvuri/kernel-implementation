@@ -1,0 +1,175 @@
+{
+  "started_utc": "2026-11-21T03:45:32.600811+00:00",
+  "source_sha256": {
+    "c1_naive.cu": "f3f514083e4fbe2750ea38943dd7284fbb1a0a48abca1100a6899fff9e58eb93",
+    "common.h": "c05af533fc4e13ee2eeb98679445a93aaa09e99c050f2d9aa8742df3ab75791a",
+    "Makefile": "bf847833715b10b3f0362cc1319a145ec199a91421856b57dd9a576b22d2bd83"
+  },
+  "CUDA_MODULE_LOADING": "EAGER",
+  "protocol": "One discarded full-size warm-up process, then five fresh-process default-size runs. Each process measures its first three-kernel pipeline; no in-process data warm-up. CUDA events surround only the three launches.",
+  "correctness": [
+    {
+      "N": 1,
+      "d": 1,
+      "elements": 1,
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "N": 8,
+      "d": 4,
+      "elements": 32,
+      "max_abs_error": 4.863658087383982e-10,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "N": 16,
+      "d": 16,
+      "elements": 256,
+      "max_abs_error": 4.997342983870112e-09,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "N": 17,
+      "d": 19,
+      "elements": 323,
+      "max_abs_error": 4.990053481535028e-09,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "N": 33,
+      "d": 65,
+      "elements": 2145,
+      "max_abs_error": 4.7637662703436945e-08,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "N": 63,
+      "d": 64,
+      "elements": 4032,
+      "max_abs_error": 2.9409774171540448e-08,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "N": 129,
+      "d": 4,
+      "elements": 516,
+      "max_abs_error": 4.875240211532628e-10,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "N": 257,
+      "d": 8,
+      "elements": 2056,
+      "max_abs_error": 4.855101876088952e-09,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "N": 3,
+      "d": 1024,
+      "elements": 3072,
+      "max_abs_error": 4.996355329467406e-08,
+      "tolerance": 1e-06,
+      "passed": true
+    }
+  ],
+  "timing_runs": [
+    {
+      "program": "c1_naive",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "44.529",
+      "checksum": "623032.963445",
+      "phase": "warmup",
+      "run": 0,
+      "required_output": "623032.963,44.529"
+    },
+    {
+      "program": "c1_naive",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "46.142",
+      "checksum": "623032.963445",
+      "phase": "measured",
+      "run": 1,
+      "required_output": "623032.963,46.142"
+    },
+    {
+      "program": "c1_naive",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "43.410",
+      "checksum": "623032.963445",
+      "phase": "measured",
+      "run": 2,
+      "required_output": "623032.963,43.410"
+    },
+    {
+      "program": "c1_naive",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "44.084",
+      "checksum": "623032.963445",
+      "phase": "measured",
+      "run": 3,
+      "required_output": "623032.963,44.084"
+    },
+    {
+      "program": "c1_naive",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "44.766",
+      "checksum": "623032.963445",
+      "phase": "measured",
+      "run": 4,
+      "required_output": "623032.963,44.766"
+    },
+    {
+      "program": "c1_naive",
+      "N": "2048",
+      "d": "64",
+      "time_ms": "47.342",
+      "checksum": "623032.963445",
+      "phase": "measured",
+      "run": 5,
+      "required_output": "623032.963,47.342"
+    }
+  ],
+  "build_command": [
+    "make",
+    "-B",
+    "-C",
+    "/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/HPML_HW3_starter/src/partc",
+    "c1_naive",
+    "ARCH=sm_89",
+    "NVCC='/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_nvcc-linux-x86_64-12.6.85-archive/bin/nvcc'",
+    "NVCCFLAGS=-O3 -std=c++14 -arch=sm_89 '-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/include' '-I/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cccl-linux-x86_64-12.6.77-archive/include' '-L/mnt/c/Users/Srikars Den/OneDrive/Desktop/hpml/tmp/cuda126-linux/cuda_cudart-linux-x86_64-12.6.77-archive/lib' --cudart=shared"
+  ],
+  "stability": "STABILITY,magnitude=1,N=33,d=19,max_abs_error=5.55111512313e-16,max_rowsum_error=4.4408920985e-16,guards=PASS,PASS\nSTABILITY,magnitude=1000,N=33,d=19,max_abs_error=2.1245794013e-10,max_rowsum_error=0,guards=PASS,PASS\n",
+  "summary": {
+    "N": 2048,
+    "d": 64,
+    "checksum": 623032.963445,
+    "median_ms": 44.766,
+    "mean_ms": 45.1488,
+    "min_ms": 43.41,
+    "max_ms": 47.342,
+    "runs": 5
+  },
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 621.14, 8188 MiB",
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0",
+    "cpu": "Intel(R) Core(TM) Ultra 9 185H",
+    "os": "Linux DESKTOP-7HTD4FP 5.15.153.1-microsoft-standard-WSL2 #1 SMP Fri Mar 29 23:14:13 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux"
+  },
+  "sources_unchanged": true,
+  "finished_utc": "2026-11-21T03:46:15.459483+00:00"
+}

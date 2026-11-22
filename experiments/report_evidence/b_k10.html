@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><title>HPML recorded output</title>
+    <style>body{margin:28px;background:#fff;color:#17232d;font-family:Arial,sans-serif}h1{font-size:27px;margin:0 0 10px}p{font-size:16px;line-height:1.4}h2{font-size:19px;margin:0 0 5px}.source{font-size:13px;color:#53616f;margin-bottom:9px}section{border:1px solid #b6c5ce;padding:15px;margin-top:16px;background:#f8fafc}pre{font:17px/1.5 Consolas,monospace;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.note{color:#4c5b66}</style><style>pre{font-size:20px;line-height:1.4}</style><h1>Part B - K=10 million</h1><p>Configuration annotations are derived from source; the stdout excerpts are unchanged.</p><p class="note">Screenshot of a local saved-log viewer. Output below is recorded program stdout, not a live terminal session.</p><section><h2>CPU, explicit memory, and managed memory</h2><div class="source">experiments\partb\screenshots\K10_output.txt</div><pre>PART B - saved measured output - K=10, N=10,000,000
+Commands: each program ran with arguments 1 5 10 50 100.
+Launch configuration (derived from source):
+S1: 10,000,000 launches; 1 block/launch; 1 thread/block.
+S2: 39,063 launches; 1 block/launch; 256 threads/block.
+S3: 1 launch; 39,063 blocks; 256 threads/block.
+Final-block writes are guarded by i &lt; N.
+
+q1_cpu - original stdout lines:
+K=10 n=10000000 time_ms=47.905 checksum=30000000.0 PASSED
+
+q2_malloc - original stdout lines:
+K=10 scenario=1 time_ms=149405.172 checksum=30000000.0 PASSED
+K=10 scenario=2 time_ms=543.722 checksum=30000000.0 PASSED
+K=10 scenario=3 time_ms=0.571 checksum=30000000.0 PASSED
+
+q3_unified - original stdout lines:
+K=10 scenario=1 time_ms=146718.672 checksum=30000000.0 PASSED
+K=10 scenario=2 time_ms=575.363 checksum=30000000.0 PASSED
+K=10 scenario=3 time_ms=9.062 checksum=30000000.0 PASSED
+</pre></section>
